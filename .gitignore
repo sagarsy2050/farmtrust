@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Build output
+dist/
+build/
+
+# Local secrets / environment (committed: .env.example only)
+.env
+.env.local
+!.env.example
+
+# SQLite runtime files
+*.db
+*.db-shm
+*.db-wal
+
+# User-uploaded content - privacy-sensitive, never committed
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Large third-party model checkpoint - not ours to redistribute, see
+# model/README or ai-image-detector/README for the source link instead
+model/model_epoch_24.pth
+
+# uv / package manager lockfile caches
+.uv-cache/
+
+# Editor / OS
+.DS_Store
+Thumbs.db

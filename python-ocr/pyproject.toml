@@ -1,0 +1,13 @@
+[project]
+name = "farmtrust-ocr-worker"
+version = "1.0.0"
+requires-python = ">=3.10"
+dependencies = [
+    "pymupdf>=1.24.0",
+    "opencv-python-headless>=4.9.0",
+    "pytesseract>=0.3.10",
+    "pillow>=10.3.0",
+]
+
+[tool.uv]
+package = false
