@@ -20,13 +20,30 @@ const UPLOAD_DIR = path.resolve(process.env.UPLOAD_DIR || './uploads');
 // that happens (curl never catches this — CORS is browser-only). Accept any
 // loopback origin instead; still strictly local-only, just not port-pinned.
 const LOOPBACK_ORIGIN = /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+// GitHub Pages is a supported deploy target for the frontend, so allow any
+// *.github.io origin. When hosting the frontend elsewhere (Vercel/Netlify),
+// set CLIENT_ORIGIN — it accepts a comma-separated list of exact origins.
+const GITHUB_PAGES_ORIGIN = /^https:\/\/[a-z0-9-]+\.github\.io$/i;
+const ALLOWED_ORIGINS = (process.env.CLIENT_ORIGIN || '')
+  .split(',')
+  .map((o) => o.trim().replace(/\/$/, ''))
+  .filter(Boolean);
+
+function isAllowedOrigin(origin) {
+  if (!origin) return true; // curl, same-origin, server-to-server
+  const clean = origin.replace(/\/$/, '');
+  return (
+    LOOPBACK_ORIGIN.test(clean) ||
+    GITHUB_PAGES_ORIGIN.test(clean) ||
+    ALLOWED_ORIGINS.includes(clean)
+  );
+}
+
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || LOOPBACK_ORIGIN.test(origin) || origin === process.env.CLIENT_ORIGIN) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+    // Never throw here — a rejected preflight should be a normal 200 without
+    // the Allow-Origin header (browser then blocks), not a 500.
+    callback(null, isAllowedOrigin(origin));
   },
   credentials: true,
 }));
