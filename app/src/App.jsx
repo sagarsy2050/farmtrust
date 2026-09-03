@@ -135,7 +135,7 @@ function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClientInstance}>
         <CartProvider>
-          <Router>
+          <Router basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <AuthenticatedApp />
           </Router>

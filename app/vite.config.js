@@ -11,7 +11,14 @@ import { defineConfig } from 'vite'
 // throughout src/ — jsconfig.json's `paths` only helps editor intellisense,
 // it does nothing for Vite's own module resolution — so that alias has to be
 // declared explicitly here now.
+// `base` controls the public path assets are served from. Local dev and any
+// root-domain host (Vercel/Netlify) use '/'. GitHub Pages serves this project
+// at https://<user>.github.io/farmtrust/, so the Pages build sets
+// VITE_BASE=/farmtrust/ (see .github/workflows/pages.yml).
+const base = process.env.VITE_BASE || '/';
+
 export default defineConfig({
+  base,
   plugins: [react()],
   resolve: {
     alias: {
