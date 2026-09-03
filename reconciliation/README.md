@@ -175,18 +175,37 @@ Potential next steps include:
 
 ## How to Run This Project
 
-1. **Clone the repository**
+This module now lives inside the [FarmTrust](../README.md) monorepo as its
+fintech-side companion piece, rather than as its own standalone repo.
+
+1. **Install dependencies** (from this folder)
    ```bash
-   git clone https://github.com/nabigwaku/Automated-Financial-Transaction-Reconciliation.git
-   cd Automated-Financial-Transaction-Reconciliation
+   cd reconciliation
+   pip install -r requirements.txt   # or: uv sync
    ```
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. **Run the notebook:**
+   - `notebooks/financial_transaction_reconciliation.ipynb`, against the
+     bundled 500-transaction synthetic sample in `data/raw/` (the dataset
+     described above — built to exercise every match type: exact, tolerance,
+     and unmatched exceptions).
 
-3. **Run the notebook:**
-   - `financial_transaction_reconciliation.ipynb`
+3. **Load outputs into Tableau** or your preferred BI tool from `outputs/`.
 
-4. **Load outputs into Tableau** or your preferred BI tool
+### Optional: reconcile FarmTrust's own live orders
+
+`server/scripts/export-reconciliation.js` replaces the two `data/raw/*.csv`
+files above with FarmTrust's *actual* paid orders (from `server/farmtrust.db`)
+in the same schema, so this same notebook can reconcile the marketplace's
+real transaction history instead of the synthetic sample:
+
+```bash
+node server/scripts/export-reconciliation.js
+```
+
+Without a `STRIPE_SECRET_KEY` configured, the "bank" side is mirrored
+1:1 from FarmTrust's own orders table (clearly labeled `bankSource: "mock"`
+in the script's output) — useful for exercising the pipeline end-to-end
+locally, but not a genuine bank-vs-ledger comparison until a real Stripe key
+is set, at which point the bank side comes from Stripe's own payment-intent
+records instead.
