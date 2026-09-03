@@ -1,0 +1,13 @@
+# Netlify deploy config for the FarmTrust frontend (app/).
+# Set the "Base directory" to `app` in the Netlify UI so this file is picked up.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA fallback: react-router uses BrowserRouter, so every path must serve
+# index.html and let the client router resolve it.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
