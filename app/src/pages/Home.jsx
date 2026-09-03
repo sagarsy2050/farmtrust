@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, Search, MapPin, Carrot, Apple, Wheat, Flame, Milk, Star, ShieldCheck } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { Sprout, Search, Carrot, Apple, Wheat, Flame, Milk, ShieldCheck } from 'lucide-react';
+import { api } from '@/api/client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -9,7 +9,7 @@ import VerifiedBadge from '@/components/VerifiedBadge';
 import { Image } from '@/components/ui/image';
 import PublicNavbar from '@/components/PublicNavbar';
 import Footer from '@/components/Footer';
-import { formatCurrency, formatUnit } from '@/lib/format';
+import { formatCurrency } from '@/lib/format';
 
 const CATEGORIES = [
   { id: 'vegetables', label: 'Vegetables', icon: Carrot },
@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     (async () => {
       try {
-        const data = await base44.entities.Product.filter({ status: 'published' }, '-created_date', 48);
+        const data = await api.entities.Product.filter({ status: 'published' }, '-created_date', 48);
         setProducts(data);
       } catch (e) {
         console.error(e);
@@ -45,8 +45,6 @@ export default function Home() {
     const matchCat = category === 'all' || p.category === category;
     return matchSearch && matchCat;
   });
-
-  const verifiedFarmers = [...new Set(products.map(p => p.farmer_id))].slice(0, 6);
 
   return (
     <div className="flex min-h-screen flex-col">

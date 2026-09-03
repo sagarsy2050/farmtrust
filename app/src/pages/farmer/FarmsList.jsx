@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
-import { Plus, MapPin, Ruler, Leaf } from 'lucide-react';
+import { Plus, MapPin } from 'lucide-react';
 import VerifiedBadge from '@/components/VerifiedBadge';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ export default function FarmsList() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -22,7 +22,7 @@ export default function FarmsList() {
     if (!user?.id) return;
     setLoading(true);
     setError(null);
-    try { setFarms(await base44.entities.Farm.filter({ farmer_id: user.id }, '-created_date')); }
+    try { setFarms(await api.entities.Farm.filter({ farmer_id: user.id }, '-created_date')); }
     catch (e) { console.error(e); setError('Could not load your farms.'); }
     finally { setLoading(false); }
   }, [user?.id]);

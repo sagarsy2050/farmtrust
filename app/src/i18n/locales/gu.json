@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ડેશબોર્ડ",
+    "verification": "ચકાસણી",
+    "myFarms": "મારા ખેતરો",
+    "documents": "દસ્તાવેજો",
+    "products": "ઉત્પાદનો",
+    "orders": "ઓર્ડર",
+    "earnings": "કમાણી",
+    "analytics": "વિશ્લેષણ",
+    "signOut": "સાઇન આઉટ"
+  },
+  "common": {
+    "save": "સાચવો",
+    "saveChanges": "ફેરફારો સાચવો",
+    "cancel": "રદ કરો",
+    "upload": "અપલોડ કરો",
+    "uploading": "અપલોડ થઈ રહ્યું છે...",
+    "saving": "સાચવાઈ રહ્યું છે...",
+    "submit": "સબમિટ કરો",
+    "retry": "ફરી પ્રયાસ કરો",
+    "replace": "બદલો"
+  },
+  "verification": {
+    "title": "ચકાસણી કેન્દ્ર",
+    "subtitle": "વેરિફાઈડ ખેડૂત બેજ મેળવવા માટે તમામ પગલાં પૂર્ણ કરો.",
+    "progress": "ચકાસણી પ્રગતિ",
+    "profilePhoto": "પ્રોફાઇલ ફોટો",
+    "profilePhotoDesc": "પાસપોર્ટ સાઇઝનો ફોટો - પોર્ટ્રેટ અથવા ચોરસ, સાદી પૃષ્ઠભૂમિ, ચહેરો સ્પષ્ટ દેખાવો જોઈએ.",
+    "uploadPhoto": "ફોટો અપલોડ કરો",
+    "replacePhoto": "ફોટો બદલો",
+    "mapFarm": "તમારા ખેતરનો નકશો બનાવો",
+    "uploadDocuments": "દસ્તાવેજો અપલોડ કરો"
+  },
+  "account": {
+    "title": "મારું ખાતું",
+    "myAccount": "મારું ખાતું",
+    "becomeFarmer": "વેરિફાઈડ ખેડૂત બનો",
+    "wantToSell": "FarmTrust પર વેચવા માંગો છો?",
+    "profilePhoto": "પ્રોફાઇલ ફોટો"
+  },
+  "language": {
+    "select": "ભાષા પસંદ કરો",
+    "title": "ભાષા"
+  }
+}

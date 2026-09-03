@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CheckCircle, Package, Sprout } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { CheckCircle, Package } from 'lucide-react';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import PublicNavbar from '@/components/PublicNavbar';
 import Footer from '@/components/Footer';
@@ -17,7 +17,7 @@ export default function OrderSuccess() {
       try {
         if (sessionId) {
           // Verify payment status via backend function
-          const res = await base44.functions.invoke('verifyPayment', { session_id: sessionId });
+          const res = await api.functions.invoke('verifyPayment', { session_id: sessionId });
           setOrder(res);
         }
       } catch (e) {

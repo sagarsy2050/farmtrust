@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import ReviewStars from '@/components/ReviewStars';
@@ -27,7 +27,7 @@ export default function ReviewForm({ order, onSubmitted, onCancel }) {
     }
     setSaving(true);
     try {
-      const review = await base44.entities.Review.create({
+      const review = await api.entities.Review.create({
         order_id: order.id,
         customer_id: user.id,
         customer_name: user.full_name,

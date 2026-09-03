@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, MapPin, FileText, Satellite, Sprout, Users, Truck, Star } from 'lucide-react';
+import { ShieldCheck, MapPin, FileText, Satellite, Sprout, Users, Star } from 'lucide-react';
 import PublicNavbar from '@/components/PublicNavbar';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';

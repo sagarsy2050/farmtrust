@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import PublicNavbar from '@/components/PublicNavbar';
 import Footer from '@/components/Footer';
@@ -32,13 +32,13 @@ export default function CustomerOrders() {
   useEffect(() => {
     (async () => {
       try {
-        const list = await base44.entities.Order.list('-created_date', 100);
+        const list = await api.entities.Order.list('-created_date', 100);
         setOrders(list);
         const completed = list.filter(o => o.delivery_status === 'completed');
         if (completed.length) {
           const pairs = await Promise.all(completed.map(async o => {
             try {
-              const existing = await base44.entities.Review.filter({ order_id: o.id });
+              const existing = await api.entities.Review.filter({ order_id: o.id });
               return [o.id, existing?.[0] || false];
             } catch {
               return [o.id, false];

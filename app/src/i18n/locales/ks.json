@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ڈیش بورڈ",
+    "verification": "تصدیق",
+    "myFarms": "میۆن کھیت",
+    "documents": "دستاویز",
+    "products": "پیداوار",
+    "orders": "آرڈر",
+    "earnings": "کمای",
+    "analytics": "تجزیہ",
+    "signOut": "سائن آؤٹ"
+  },
+  "common": {
+    "save": "محفوظ کریو",
+    "saveChanges": "تبدیلی محفوظ کریو",
+    "cancel": "منسوخ کریو",
+    "upload": "اپ لوڈ کریو",
+    "uploading": "اپ لوڈ گژھان...",
+    "saving": "محفوظ گژھان...",
+    "submit": "پیش کریو",
+    "retry": "دوبارہ کوشش کریو",
+    "replace": "بدلاو"
+  },
+  "verification": {
+    "title": "تصدیق مرکز",
+    "subtitle": "تصدیق شُدہ کِسان بَیج حاصل کرنہٕ خٲطرہٕ تمام مرحلہٕ پورہٕ کریو۔",
+    "progress": "تصدیقُک پیش رفت",
+    "profilePhoto": "پروفائل فوٹو",
+    "profilePhotoDesc": "پاسپورٹ سائز فوٹو - پورٹریٹ یا مربع، سادہ پس منظر، مکھ صاف نظر آسہٕ۔",
+    "uploadPhoto": "فوٹو اپ لوڈ کریو",
+    "replacePhoto": "فوٹو بدلاو",
+    "mapFarm": "پننُن کھیتُک نقشہ بناو",
+    "uploadDocuments": "دستاویز اپ لوڈ کریو"
+  },
+  "account": {
+    "title": "میۆن اکاؤنٹ",
+    "myAccount": "میۆن اکاؤنٹ",
+    "becomeFarmer": "تصدیق شُدہ کِسان بنیو",
+    "wantToSell": "FarmTrust پؠٹھ ؤچھنہٕ چھیو خواہش؟",
+    "profilePhoto": "پروفائل فوٹو"
+  },
+  "language": {
+    "select": "زبان ژارٕو",
+    "title": "زبان"
+  }
+}

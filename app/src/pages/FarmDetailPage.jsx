@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import FarmDetail from './FarmDetail';
 
 export default function FarmDetailPage() {
@@ -12,9 +12,9 @@ export default function FarmDetailPage() {
   useEffect(() => {
     (async () => {
       try {
-        const f = await base44.entities.Farm.get(id);
+        const f = await api.entities.Farm.get(id);
         setFarm(f);
-        try { setReviews(await base44.entities.Review.filter({ farmer_id: f.farmer_id })); } catch {}
+        try { setReviews(await api.entities.Review.filter({ farmer_id: f.farmer_id })); } catch {}
       } catch (e) {
         console.error(e);
       } finally {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { TrendingUp, MapPin, Info, ChevronDown } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import PublicNavbar from '@/components/PublicNavbar';
@@ -36,14 +36,14 @@ export default function MarketPrices() {
   const loadMeta = React.useCallback(async () => {
     setMetaError(null);
     try {
-      const m = await base44.marketPrices.meta();
+      const m = await api.marketPrices.meta();
       setMeta(m);
       if (!cityRegion && m.cityRegions.length) setCityRegion(m.cityRegions[0]);
     } catch (e) {
       console.error(e);
       setMetaError('Could not load market filters. Please refresh the page.');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   useEffect(() => { loadMeta(); }, [loadMeta]);
@@ -57,7 +57,7 @@ export default function MarketPrices() {
       if (category) filters.category = category;
       if (commodity) filters.commodity = commodity;
       if (market && market !== 'all') filters.market = market;
-      const res = await base44.marketPrices.list(filters);
+      const res = await api.marketPrices.list(filters);
       setData(res);
     } catch (e) {
       console.error(e);
@@ -85,7 +85,7 @@ export default function MarketPrices() {
     setHistoryDays(7);
     setHistoryLoading(true);
     try {
-      const h = await base44.marketPrices.history({ commodity: record.commodity, city_region: record.cityRegion, market: record.market, days: 7 });
+      const h = await api.marketPrices.history({ commodity: record.commodity, city_region: record.cityRegion, market: record.market, days: 7 });
       setHistory(h);
     } catch (e) {
       console.error(e);
@@ -100,7 +100,7 @@ export default function MarketPrices() {
     if (!historyFor) return;
     setHistoryLoading(true);
     try {
-      const h = await base44.marketPrices.history({ commodity: historyFor.commodity, city_region: historyFor.cityRegion, market: historyFor.market, days });
+      const h = await api.marketPrices.history({ commodity: historyFor.commodity, city_region: historyFor.cityRegion, market: historyFor.market, days });
       setHistory(h);
     } catch (e) {
       console.error(e);

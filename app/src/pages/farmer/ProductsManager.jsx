@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useOutletContext, Link } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { useOutletContext } from 'react-router-dom';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -30,7 +30,7 @@ export default function ProductsManager() {
   });
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -40,8 +40,8 @@ export default function ProductsManager() {
     setError(null);
     try {
       const [f, p] = await Promise.all([
-        base44.entities.Farm.filter({ farmer_id: user.id }),
-        base44.entities.Product.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Farm.filter({ farmer_id: user.id }),
+        api.entities.Product.filter({ farmer_id: user.id }, '-created_date'),
       ]);
       setFarms(f); setProducts(p);
     } catch (e) {
@@ -62,7 +62,7 @@ export default function ProductsManager() {
     let cancelled = false;
     (async () => {
       try {
-        const res = await base44.marketPrices.list({ category: form.category });
+        const res = await api.marketPrices.list({ category: form.category });
         const nameLower = (form.name || '').toLowerCase();
         const match = nameLower
           ? res.records.find(r => nameLower.includes(r.commodity.toLowerCase()))
@@ -102,7 +102,7 @@ export default function ProductsManager() {
     if (!file) return;
     setUploadingImage(true);
     try {
-      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+      const { file_url } = await api.integrations.Core.UploadFile({ file });
       setForm(prev => ({ ...prev, photo_url: file_url }));
     } catch (err) {
       toast({ title: 'Upload failed', variant: 'destructive' });
@@ -129,10 +129,10 @@ export default function ProductsManager() {
         farm_name: selectedFarm.farm_name,
       };
       if (editingId) {
-        await base44.entities.Product.update(editingId, payload);
+        await api.entities.Product.update(editingId, payload);
         toast({ title: 'Product updated', description: 'Your changes have been saved.' });
       } else {
-        await base44.entities.Product.create(payload);
+        await api.entities.Product.create(payload);
         toast({ title: 'Product added', description: 'Your product has been created.' });
       }
       resetForm();
@@ -145,7 +145,7 @@ export default function ProductsManager() {
 
   const setStatus = async (product, status) => {
     try {
-      await base44.entities.Product.update(product.id, { status });
+      await api.entities.Product.update(product.id, { status });
       await loadData();
       toast({ title: `Product ${status.replace('_', ' ')}` });
     } catch (err) {

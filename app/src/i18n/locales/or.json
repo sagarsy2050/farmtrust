@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ଡ୍ୟାସବୋର୍ଡ",
+    "verification": "ଯାଞ୍ଚ",
+    "myFarms": "ମୋର ଚାଷ ଜମି",
+    "documents": "ଦଲିଲ",
+    "products": "ଉତ୍ପାଦ",
+    "orders": "ଅର୍ଡର",
+    "earnings": "ଆୟ",
+    "analytics": "ବିଶ୍ଳେଷଣ",
+    "signOut": "ସାଇନ ଆଉଟ"
+  },
+  "common": {
+    "save": "ସେଭ କରନ୍ତୁ",
+    "saveChanges": "ପରିବର୍ତ୍ତନ ସେଭ କରନ୍ତୁ",
+    "cancel": "ବାତିଲ କରନ୍ତୁ",
+    "upload": "ଅପଲୋଡ କରନ୍ତୁ",
+    "uploading": "ଅପଲୋଡ ହେଉଛି...",
+    "saving": "ସେଭ ହେଉଛି...",
+    "submit": "ଦାଖଲ କରନ୍ତୁ",
+    "retry": "ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ",
+    "replace": "ବଦଳାନ୍ତୁ"
+  },
+  "verification": {
+    "title": "ଯାଞ୍ଚ କେନ୍ଦ୍ର",
+    "subtitle": "ଯାଞ୍ଚିତ କୃଷକ ବ୍ୟାଜ ପାଇବାକୁ ସମସ୍ତ ପର୍ଯ୍ୟାୟ ପୂରଣ କରନ୍ତୁ।",
+    "progress": "ଯାଞ୍ଚ ପ୍ରଗତି",
+    "profilePhoto": "ପ୍ରୋଫାଇଲ ଫଟୋ",
+    "profilePhotoDesc": "ପାସପୋର୍ଟ ଆକାରର ଫଟୋ - ପୋର୍ଟ୍ରେଟ କିମ୍ବା ବର୍ଗାକାର, ସାଧା ପୃଷ୍ଠଭୂମି, ମୁହଁ ସ୍ପଷ୍ଟ ଦେଖାଯିବା ଉଚିତ।",
+    "uploadPhoto": "ଫଟୋ ଅପଲୋଡ କରନ୍ତୁ",
+    "replacePhoto": "ଫଟୋ ବଦଳାନ୍ତୁ",
+    "mapFarm": "ଆପଣଙ୍କ ଚାଷ ଜମିର ମାନଚିତ୍ର ତିଆରି କରନ୍ତୁ",
+    "uploadDocuments": "ଦଲିଲ ଅପଲୋଡ କରନ୍ତୁ"
+  },
+  "account": {
+    "title": "ମୋର ଖାତା",
+    "myAccount": "ମୋର ଖାତା",
+    "becomeFarmer": "ଯାଞ୍ଚିତ କୃଷକ ହୁଅନ୍ତୁ",
+    "wantToSell": "FarmTrust ରେ ବିକ୍ରି କରିବାକୁ ଚାହୁଁଛନ୍ତି?",
+    "profilePhoto": "ପ୍ରୋଫାଇଲ ଫଟୋ"
+  },
+  "language": {
+    "select": "ଭାଷା ବାଛନ୍ତୁ",
+    "title": "ଭାଷା"
+  }
+}

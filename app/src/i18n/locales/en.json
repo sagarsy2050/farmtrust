@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "Dashboard",
+    "verification": "Verification",
+    "myFarms": "My Farms",
+    "documents": "Documents",
+    "products": "Products",
+    "orders": "Orders",
+    "earnings": "Earnings",
+    "analytics": "Analytics",
+    "signOut": "Sign out"
+  },
+  "common": {
+    "save": "Save",
+    "saveChanges": "Save changes",
+    "cancel": "Cancel",
+    "upload": "Upload",
+    "uploading": "Uploading...",
+    "saving": "Saving...",
+    "submit": "Submit",
+    "retry": "Retry",
+    "replace": "Replace"
+  },
+  "verification": {
+    "title": "Verification Center",
+    "subtitle": "Complete all steps to earn your Verified Farmer tag.",
+    "progress": "Verification Progress",
+    "profilePhoto": "Profile photo",
+    "profilePhotoDesc": "Passport-size photo - portrait or square, plain background, face clearly visible.",
+    "uploadPhoto": "Upload photo",
+    "replacePhoto": "Replace photo",
+    "mapFarm": "Map your farm",
+    "uploadDocuments": "Upload documents"
+  },
+  "account": {
+    "title": "My account",
+    "myAccount": "My account",
+    "becomeFarmer": "Become a verified farmer",
+    "wantToSell": "Want to sell on FarmTrust?",
+    "profilePhoto": "Profile photo"
+  },
+  "language": {
+    "select": "Select language",
+    "title": "Language"
+  }
+}

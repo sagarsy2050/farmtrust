@@ -10,6 +10,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import { CartProvider } from '@/lib/cartContext';
 // Add page imports here
 import Home from '@/pages/Home';
+import Account from '@/pages/Account';
 import ProductDetail from '@/pages/ProductDetail';
 import FarmDetailPage from '@/pages/FarmDetailPage';
 import Cart from '@/pages/Cart';
@@ -86,6 +87,11 @@ const AuthenticatedApp = () => {
       <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login?returnTo=%2Fcheckout" replace />} />}>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/orders" element={<CustomerOrders />} />
+      </Route>
+
+      {/* Any authenticated role - self-service profile settings */}
+      <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
+        <Route path="/account" element={<Account />} />
       </Route>
 
       {/* Farmer portal - farmers and admins (support/debugging) only */}

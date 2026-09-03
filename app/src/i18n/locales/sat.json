@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ᱰᱮᱥᱵᱚᱰ",
+    "verification": "ᱥᱟᱹᱨᱤ ᱦᱮᱨᱟ",
+    "myFarms": "ᱟᱢᱟᱜ ᱚᱲᱟᱜ ᱡᱟᱶᱜᱟᱭ",
+    "documents": "ᱠᱟᱜᱡᱽ",
+    "products": "ᱪᱮᱛᱟᱱ",
+    "orders": "ᱚᱨᱰᱟᱨ",
+    "earnings": "ᱧᱟᱢᱚᱜᱽ",
+    "analytics": "ᱵᱤᱥᱞᱮᱥᱚᱬ",
+    "signOut": "ᱥᱟᱭᱤᱱ ᱟᱡᱽ"
+  },
+  "common": {
+    "save": "ᱥᱟᱶᱜᱮ ᱫᱚᱦᱚᱭ ᱢᱮ",
+    "saveChanges": "ᱵᱚᱫᱚᱞ ᱠᱚ ᱥᱟᱶᱜᱮ ᱫᱚᱦᱚᱭ ᱢᱮ",
+    "cancel": "ᱵᱟᱹᱰᱨᱟᱹᱭ ᱢᱮ",
+    "upload": "ᱟᱯᱞᱚᱰ ᱢᱮ",
+    "uploading": "ᱟᱯᱞᱚᱰ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ...",
+    "saving": "ᱥᱟᱶᱜᱮ ᱫᱚᱦᱚᱭ ᱦᱩᱭᱩᱜ ᱠᱟᱱᱟ...",
+    "submit": "ᱡᱚᱢᱟᱹ ᱢᱮ",
+    "retry": "ᱟᱨᱩ ᱥᱮᱫ ᱛᱟᱦᱮᱸ ᱢᱮ",
+    "replace": "ᱵᱚᱫᱚᱞ ᱢᱮ"
+  },
+  "verification": {
+    "title": "ᱥᱟᱹᱨᱤ ᱦᱮᱨᱟ ᱠᱮᱱᱰᱨᱟ",
+    "subtitle": "ᱥᱟᱹᱨᱤ ᱦᱮᱨᱟ ᱠᱩᱲᱤ ᱵᱮᱡᱽ ᱧᱟᱢ ᱞᱟᱹᱜᱤᱫ ᱡᱚᱛᱚ ᱥᱚᱯᱰᱚᱱ ᱠᱚ ᱯᱩᱨᱟᱹᱣ ᱢᱮ ᱾",
+    "progress": "ᱥᱟᱹᱨᱤ ᱦᱮᱨᱟ ᱞᱟᱦᱟ",
+    "profilePhoto": "ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱪᱤᱛᱟᱹᱨ",
+    "profilePhotoDesc": "ᱯᱟᱥᱯᱚᱨᱴ ᱢᱟᱯ ᱨᱮᱭᱟᱜ ᱪᱤᱛᱟᱹᱨ - ᱢᱩᱠᱷ ᱪᱤᱛᱟᱹᱨ ᱟᱨ ᱪᱚᱠᱚᱨ, ᱞᱮᱠᱟᱱ ᱯᱟᱹᱲᱦᱟᱣ, ᱢᱩᱠᱷ ᱴᱷᱤᱠ ᱧᱮᱞᱚᱜ ᱚᱠᱟ ᱢᱟᱠᱟᱛᱮ ᱾",
+    "uploadPhoto": "ᱪᱤᱛᱟᱹᱨ ᱟᱯᱞᱚᱰ ᱢᱮ",
+    "replacePhoto": "ᱪᱤᱛᱟᱹᱨ ᱵᱚᱫᱚᱞ ᱢᱮ",
+    "mapFarm": "ᱟᱢᱟᱜ ᱚᱲᱟᱜ ᱡᱟᱶᱜᱟᱭ ᱨᱮᱭᱟᱜ ᱢᱮᱯᱽ ᱛᱮᱭᱟᱨ ᱢᱮ",
+    "uploadDocuments": "ᱠᱟᱜᱡᱽ ᱟᱯᱞᱚᱰ ᱢᱮ"
+  },
+  "account": {
+    "title": "ᱟᱢᱟᱜ ᱦᱤᱥᱟᱹᱵ",
+    "myAccount": "ᱟᱢᱟᱜ ᱦᱤᱥᱟᱹᱵ",
+    "becomeFarmer": "ᱥᱟᱹᱨᱤ ᱦᱮᱨᱟ ᱠᱩᱲᱤ ᱦᱩᱭ ᱢᱮ",
+    "wantToSell": "FarmTrust ᱨᱮ ᱟᱹᱰᱤ ᱢᱮᱱᱟᱢᱟ ᱪᱟᱸᱫᱚ ᱢᱮ ?",
+    "profilePhoto": "ᱯᱨᱚᱯᱷᱟᱭᱤᱞ ᱪᱤᱛᱟᱹᱨ"
+  },
+  "language": {
+    "select": "ᱯᱟᱹᱨᱥᱤ ᱵᱟᱪᱷᱟᱣ ᱢᱮ",
+    "title": "ᱯᱟᱹᱨᱥᱤ"
+  }
+}

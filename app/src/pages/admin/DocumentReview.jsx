@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { FileText, CheckCircle, XCircle, AlertTriangle, Loader2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
@@ -33,9 +33,9 @@ export default function DocumentReview() {
       setError(null);
       let docs;
       if (filter === 'all') {
-        docs = await base44.asServiceRole.entities.Document.list('-created_date', 100);
+        docs = await api.asServiceRole.entities.Document.list('-created_date', 100);
       } else {
-        docs = await base44.asServiceRole.entities.Document.filter({ status: filter }, '-created_date', 100);
+        docs = await api.asServiceRole.entities.Document.filter({ status: filter }, '-created_date', 100);
       }
       setDocuments(docs);
     } catch (e) {
@@ -49,7 +49,7 @@ export default function DocumentReview() {
     setActioning(docId);
     try {
       const notes = reviewNotes[docId] || '';
-      await base44.asServiceRole.entities.Document.update(docId, {
+      await api.asServiceRole.entities.Document.update(docId, {
         status,
         review_notes: notes,
         reviewed_by: 'admin'
@@ -65,7 +65,7 @@ export default function DocumentReview() {
   const loadExtraction = async (docId) => {
     setExtractions(prev => ({ ...prev, [docId]: 'loading' }));
     try {
-      const row = await base44.documentExtractions.get(docId);
+      const row = await api.documentExtractions.get(docId);
       setExtractions(prev => ({ ...prev, [docId]: row }));
     } catch (e) {
       // 404 just means no OCR extraction exists for this document (e.g. a
@@ -76,7 +76,7 @@ export default function DocumentReview() {
 
   const handleViewFile = async (doc) => {
     try {
-      const { signed_url } = await base44.asServiceRole.integrations.Core.CreateFileSignedUrl({ file_uri: doc.file_url });
+      const { signed_url } = await api.asServiceRole.integrations.Core.CreateFileSignedUrl({ file_uri: doc.file_url });
       window.open(signed_url, '_blank');
     } catch (e) {
       // Fallback to direct URL

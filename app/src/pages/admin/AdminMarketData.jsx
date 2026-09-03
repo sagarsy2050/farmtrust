@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { TrendingUp, RefreshCw, Loader2, MapPin, Package } from 'lucide-react';
@@ -17,7 +17,7 @@ export default function AdminMarketData() {
     setLoading(true);
     setError(null);
     try {
-      const [s, m] = await Promise.all([base44.marketPrices.adminStatus(), base44.marketPrices.meta()]);
+      const [s, m] = await Promise.all([api.marketPrices.adminStatus(), api.marketPrices.meta()]);
       setStatus(s);
       setMeta(m);
     } catch (e) {
@@ -33,7 +33,7 @@ export default function AdminMarketData() {
   const runSync = async () => {
     setSyncing(true);
     try {
-      const res = await base44.marketPrices.adminSync();
+      const res = await api.marketPrices.adminSync();
       toast({ title: res.mode === 'local-seed' ? 'No live source configured' : 'Sync complete', description: res.message });
       await load();
     } catch (e) {

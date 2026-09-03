@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { formatCurrency } from '@/lib/format';
 import { Users, MapPin, Package, ShoppingCart } from 'lucide-react';
@@ -15,10 +15,10 @@ export default function AdminReports() {
     (async () => {
       try {
         const [u, f, p, o] = await Promise.all([
-          base44.asServiceRole.entities.User.list('-created_date', 100),
-          base44.asServiceRole.entities.Farm.list('-created_date', 100),
-          base44.asServiceRole.entities.Product.list('-created_date', 100),
-          base44.asServiceRole.entities.Order.list('-created_date', 100),
+          api.asServiceRole.entities.User.list('-created_date', 100),
+          api.asServiceRole.entities.Farm.list('-created_date', 100),
+          api.asServiceRole.entities.Product.list('-created_date', 100),
+          api.asServiceRole.entities.Order.list('-created_date', 100),
         ]);
         setData({ users: u, farms: f, products: p, orders: o });
       } catch (e) {
@@ -63,6 +63,15 @@ export default function AdminReports() {
         </div>
       )}
 
+      {loading ? (
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {Array.from({ length: 4 }).map((_, i) => <div key={i} className="h-20 animate-pulse rounded-xl bg-muted" />)}
+          </div>
+          <div className="h-72 animate-pulse rounded-2xl bg-muted" />
+        </div>
+      ) : (
+      <>
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map(s => {
           const Icon = s.icon;
@@ -96,6 +105,8 @@ export default function AdminReports() {
           </ResponsiveContainer>
         )}
       </div>
+      </>
+      )}
     </div>
   );
 }

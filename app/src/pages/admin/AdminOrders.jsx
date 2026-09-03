@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { ShoppingCart, Search } from 'lucide-react';
 import { formatCurrency, formatDate } from '@/lib/format';
 
@@ -12,7 +12,7 @@ export default function AdminOrders() {
   useEffect(() => {
     (async () => {
       try {
-        setOrders(await base44.asServiceRole.entities.Order.list('-created_date', 100));
+        setOrders(await api.asServiceRole.entities.Order.list('-created_date', 100));
       } catch (e) {
         console.error(e);
         setError('Could not load orders. Please try again.');

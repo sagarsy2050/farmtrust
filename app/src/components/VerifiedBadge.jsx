@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, MapPin, FileText, Satellite } from 'lucide-react';
+import { ShieldCheck, MapPin, FileText } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const LEVELS = {

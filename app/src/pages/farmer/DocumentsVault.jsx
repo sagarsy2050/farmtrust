@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
 import { Upload, FileText, Loader2, ShieldCheck, Lock, AlertTriangle, CheckCircle2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const DOC_TYPES = [
   { value: 'land_ownership', label: 'Land Ownership Record' },
@@ -39,7 +38,7 @@ export default function DocumentsVault() {
   const [confirming, setConfirming] = useState(false);
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -49,8 +48,8 @@ export default function DocumentsVault() {
     setError(null);
     try {
       const [f, d] = await Promise.all([
-        base44.entities.Farm.filter({ farmer_id: user.id }),
-        base44.entities.Document.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Farm.filter({ farmer_id: user.id }),
+        api.entities.Document.filter({ farmer_id: user.id }, '-created_date'),
       ]);
       setFarms(f); setDocuments(d);
     } catch (e) {
@@ -65,7 +64,7 @@ export default function DocumentsVault() {
 
   const createDocumentRecord = async (file_url, ocr, ai_check) => {
     const selectedFarm = farms.find(f => f.id === form.farm_id) || farms[0];
-    const doc = await base44.entities.Document.create({
+    const doc = await api.entities.Document.create({
       farmer_id: user.id,
       farmer_name: user.full_name,
       farm_id: selectedFarm?.id,
@@ -82,7 +81,7 @@ export default function DocumentsVault() {
     });
     if (ocr && (ocr.document_type === 'aadhaar' || ocr.document_type === 'kisan_card')) {
       try {
-        await base44.documentExtractions.save({ document_id: doc.id, extraction: ocr });
+        await api.documentExtractions.save({ document_id: doc.id, extraction: ocr });
       } catch (e) {
         // Non-fatal: the document itself is already submitted; the structured
         // extraction is a supporting aid for review, not required for upload.
@@ -99,7 +98,7 @@ export default function DocumentsVault() {
 
     setUploading(true);
     try {
-      const { file_url, ocr, ai_check } = await base44.integrations.Core.UploadFile({ file });
+      const { file_url, ocr, ai_check } = await api.integrations.Core.UploadFile({ file });
 
       // Identity documents get a review step before the Document record is
       // created, so a human sees the extracted fields first.

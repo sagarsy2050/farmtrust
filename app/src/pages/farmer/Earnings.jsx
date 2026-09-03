@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { formatCurrency } from '@/lib/format';
 import { Wallet, TrendingUp, Package, Users, ArrowDownToLine } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,7 @@ export default function Earnings() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -21,7 +21,7 @@ export default function Earnings() {
     if (!user?.id) return;
     setLoading(true);
     setError(null);
-    try { setOrders(await base44.entities.Order.filter({ farmer_id: user.id }, '-created_date')); }
+    try { setOrders(await api.entities.Order.filter({ farmer_id: user.id }, '-created_date')); }
     catch (e) { console.error(e); setError('Could not load your earnings.'); }
     finally { setLoading(false); }
   }, [user?.id]);

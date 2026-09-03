@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ড্যাশবোর্ড",
+    "verification": "যাচাইকরণ",
+    "myFarms": "আমার খামার",
+    "documents": "নথি",
+    "products": "পণ্য",
+    "orders": "অর্ডার",
+    "earnings": "আয়",
+    "analytics": "বিশ্লেষণ",
+    "signOut": "সাইন আউট"
+  },
+  "common": {
+    "save": "সংরক্ষণ করুন",
+    "saveChanges": "পরিবর্তন সংরক্ষণ করুন",
+    "cancel": "বাতিল করুন",
+    "upload": "আপলোড করুন",
+    "uploading": "আপলোড হচ্ছে...",
+    "saving": "সংরক্ষণ হচ্ছে...",
+    "submit": "জমা দিন",
+    "retry": "আবার চেষ্টা করুন",
+    "replace": "প্রতিস্থাপন করুন"
+  },
+  "verification": {
+    "title": "যাচাইকরণ কেন্দ্র",
+    "subtitle": "যাচাইকৃত কৃষক ব্যাজ পেতে সব ধাপ সম্পূর্ণ করুন।",
+    "progress": "যাচাইকরণ অগ্রগতি",
+    "profilePhoto": "প্রোফাইল ছবি",
+    "profilePhotoDesc": "পাসপোর্ট সাইজের ছবি - প্রতিকৃতি বা বর্গাকার, সাদামাটা পটভূমি, মুখ স্পষ্ট দেখা যায়।",
+    "uploadPhoto": "ছবি আপলোড করুন",
+    "replacePhoto": "ছবি পরিবর্তন করুন",
+    "mapFarm": "আপনার খামারের মানচিত্র তৈরি করুন",
+    "uploadDocuments": "নথি আপলোড করুন"
+  },
+  "account": {
+    "title": "আমার অ্যাকাউন্ট",
+    "myAccount": "আমার অ্যাকাউন্ট",
+    "becomeFarmer": "যাচাইকৃত কৃষক হোন",
+    "wantToSell": "FarmTrust-এ বিক্রি করতে চান?",
+    "profilePhoto": "প্রোফাইল ছবি"
+  },
+  "language": {
+    "select": "ভাষা নির্বাচন করুন",
+    "title": "ভাষা"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+    "verification": "ಪರಿಶೀಲನೆ",
+    "myFarms": "ನನ್ನ ಜಮೀನುಗಳು",
+    "documents": "ದಾಖಲೆಗಳು",
+    "products": "ಉತ್ಪನ್ನಗಳು",
+    "orders": "ಆರ್ಡರ್‌ಗಳು",
+    "earnings": "ಗಳಿಕೆ",
+    "analytics": "ವಿಶ್ಲೇಷಣೆ",
+    "signOut": "ಸೈನ್ ಔಟ್"
+  },
+  "common": {
+    "save": "ಉಳಿಸಿ",
+    "saveChanges": "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
+    "cancel": "ರದ್ದುಮಾಡಿ",
+    "upload": "ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "uploading": "ಅಪ್‌ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
+    "saving": "ಉಳಿಸಲಾಗುತ್ತಿದೆ...",
+    "submit": "ಸಲ್ಲಿಸಿ",
+    "retry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
+    "replace": "ಬದಲಾಯಿಸಿ"
+  },
+  "verification": {
+    "title": "ಪರಿಶೀಲನಾ ಕೇಂದ್ರ",
+    "subtitle": "ಪರಿಶೀಲಿತ ರೈತ ಬ್ಯಾಡ್ಜ್ ಪಡೆಯಲು ಎಲ್ಲಾ ಹಂತಗಳನ್ನು ಪೂರ್ಣಗೊಳಿಸಿ.",
+    "progress": "ಪರಿಶೀಲನಾ ಪ್ರಗತಿ",
+    "profilePhoto": "ಪ್ರೊಫೈಲ್ ಫೋಟೋ",
+    "profilePhotoDesc": "ಪಾಸ್‌ಪೋರ್ಟ್ ಗಾತ್ರದ ಫೋಟೋ - ಪೋರ್ಟ್ರೇಟ್ ಅಥವಾ ಚೌಕ, ಸರಳ ಹಿನ್ನೆಲೆ, ಮುಖ ಸ್ಪಷ್ಟವಾಗಿ ಕಾಣಬೇಕು.",
+    "uploadPhoto": "ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "replacePhoto": "ಫೋಟೋ ಬದಲಾಯಿಸಿ",
+    "mapFarm": "ನಿಮ್ಮ ಜಮೀನನ್ನು ನಕ್ಷೆ ಮಾಡಿ",
+    "uploadDocuments": "ದಾಖಲೆಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ"
+  },
+  "account": {
+    "title": "ನನ್ನ ಖಾತೆ",
+    "myAccount": "ನನ್ನ ಖಾತೆ",
+    "becomeFarmer": "ಪರಿಶೀಲಿತ ರೈತರಾಗಿ",
+    "wantToSell": "FarmTrust ನಲ್ಲಿ ಮಾರಾಟ ಮಾಡಲು ಬಯಸುವಿರಾ?",
+    "profilePhoto": "ಪ್ರೊಫೈಲ್ ಫೋಟೋ"
+  },
+  "language": {
+    "select": "ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ",
+    "title": "ಭಾಷೆ"
+  }
+}

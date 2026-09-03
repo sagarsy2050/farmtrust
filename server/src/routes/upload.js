@@ -24,7 +24,7 @@ const OCR_EXTS = new Set(['.pdf', '.jpg', '.jpeg', '.png', '.tif', '.tiff']);
 // AI-generated-image check needs a raster image (PIL.Image.open) - no PDFs.
 const AI_DETECT_EXTS = new Set(['.jpg', '.jpeg', '.png', '.tif', '.tiff']);
 
-// Matches base44.integrations.Core.UploadFile({ file }) -> { file_url }
+// Matches api.integrations.Core.UploadFile({ file }) -> { file_url }
 router.post('/', requireAuth, upload.single('file'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file provided' });
   const file_url = `/uploads/${req.file.filename}`;
@@ -42,7 +42,7 @@ router.post('/', requireAuth, upload.single('file'), async (req, res) => {
   res.json({ file_url, file_name: req.file.originalname, ocr, ai_check });
 });
 
-// Matches base44.integrations.Core.CreateFileSignedUrl({ file_uri }) -> { signed_url }
+// Matches api.integrations.Core.CreateFileSignedUrl({ file_uri }) -> { signed_url }
 // Local storage has no real signing; this just resolves to the servable path,
 // gated behind auth so it isn't a fully open static mount for private docs.
 router.post('/signed-url', requireAuth, (req, res) => {

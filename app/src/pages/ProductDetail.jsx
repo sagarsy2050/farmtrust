@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, MapPin, Calendar, Sprout, ShoppingCart, Minus, Plus, Star, ShieldCheck, TrendingUp } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { ArrowLeft, MapPin, Sprout, ShoppingCart, Minus, Plus, TrendingUp } from 'lucide-react';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 import VerifiedBadge from '@/components/VerifiedBadge';
@@ -26,16 +26,16 @@ export default function ProductDetail() {
   useEffect(() => {
     (async () => {
       try {
-        const p = await base44.entities.Product.get(id);
+        const p = await api.entities.Product.get(id);
         setProduct(p);
         if (p.farm_id) {
-          try { setFarm(await base44.entities.Farm.get(p.farm_id)); } catch {}
+          try { setFarm(await api.entities.Farm.get(p.farm_id)); } catch {}
         }
-        try { setReviews(await base44.entities.Review.filter({ product_id: id }, '-created_date')); } catch {}
+        try { setReviews(await api.entities.Review.filter({ product_id: id }, '-created_date')); } catch {}
         // Market reference is advisory context only — never overwrites the
         // farmer's configured selling price. Simple name/commodity match.
         try {
-          const res = await base44.marketPrices.list({ category: p.category });
+          const res = await api.marketPrices.list({ category: p.category });
           const nameLower = p.name.toLowerCase();
           const match = res.records.find(r => nameLower.includes(r.commodity.toLowerCase()));
           if (match) setMarketRef(match);

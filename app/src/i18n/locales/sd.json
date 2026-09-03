@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ڊيش بورڊ",
+    "verification": "تصديق",
+    "myFarms": "منھنجا فارم",
+    "documents": "دستاويز",
+    "products": "پيداوار",
+    "orders": "آرڊر",
+    "earnings": "ڪمائي",
+    "analytics": "تجزيو",
+    "signOut": "سائن آئوٽ"
+  },
+  "common": {
+    "save": "محفوظ ڪريو",
+    "saveChanges": "تبديليون محفوظ ڪريو",
+    "cancel": "رد ڪريو",
+    "upload": "اپلوڊ ڪريو",
+    "uploading": "اپلوڊ ٿي رهيو آهي...",
+    "saving": "محفوظ ٿي رهيو آهي...",
+    "submit": "جمع ڪرايو",
+    "retry": "ٻيهر ڪوشش ڪريو",
+    "replace": "تبديل ڪريو"
+  },
+  "verification": {
+    "title": "تصديق مرڪز",
+    "subtitle": "تصديق ٿيل هاري بيج حاصل ڪرڻ لاءِ سڀ مرحلا مڪمل ڪريو.",
+    "progress": "تصديق جي پيش رفت",
+    "profilePhoto": "پروفائل فوٽو",
+    "profilePhotoDesc": "پاسپورٽ سائيز جي فوٽو - پورٽريٽ يا چورس، سادي پس منظر، منھن واضح نظر اچڻ گهرجي.",
+    "uploadPhoto": "فوٽو اپلوڊ ڪريو",
+    "replacePhoto": "فوٽو تبديل ڪريو",
+    "mapFarm": "پنھنجي فارم جو نقشو ٺاهيو",
+    "uploadDocuments": "دستاويز اپلوڊ ڪريو"
+  },
+  "account": {
+    "title": "منھنجو اڪائونٽ",
+    "myAccount": "منھنجو اڪائونٽ",
+    "becomeFarmer": "تصديق ٿيل هاري بڻجو",
+    "wantToSell": "FarmTrust تي وڪڻڻ چاهيو ٿا؟",
+    "profilePhoto": "پروفائل فوٽو"
+  },
+  "language": {
+    "select": "ٻولي چونڊيو",
+    "title": "ٻولي"
+  }
+}

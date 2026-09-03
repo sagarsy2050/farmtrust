@@ -69,9 +69,15 @@ router.post('/verify-otp', (req, res) => {
   const { password_hash } = JSON.parse(row.payload);
   const id = uuidv4();
   const ts = now();
-  db.prepare(`INSERT INTO users (id, email, password_hash, full_name, role, account_type, email_verified, created_date, updated_date)
-              VALUES (?,?,?,?,?,?,?,?,?)`)
-    .run(id, email, password_hash, email.split('@')[0], 'user', 'customer', 1, ts, ts);
+  // preferred_language is set explicitly rather than left to the column
+  // default: an older schema version on this DB file defaulted it to the
+  // literal word 'English' instead of the 'en' i18next code, and SQLite
+  // doesn't retroactively update a column's stored default when the CREATE
+  // TABLE statement changes — only new rows inserted without the column
+  // would silently inherit whatever default this particular DB file has.
+  db.prepare(`INSERT INTO users (id, email, password_hash, full_name, role, account_type, email_verified, preferred_language, created_date, updated_date)
+              VALUES (?,?,?,?,?,?,?,?,?,?)`)
+    .run(id, email, password_hash, email.split('@')[0], 'user', 'customer', 1, 'en', ts, ts);
   db.prepare('DELETE FROM otp_codes WHERE email = ?').run(email);
 
   const user = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
@@ -151,9 +157,10 @@ if (googleEnabled) {
     let user = db.prepare('SELECT * FROM users WHERE email = ?').get(email);
     if (!user) {
       const id = uuidv4(); const ts = now();
-      db.prepare(`INSERT INTO users (id, email, google_id, full_name, role, account_type, email_verified, created_date, updated_date)
-                  VALUES (?,?,?,?,?,?,?,?,?)`)
-        .run(id, email, profile.id, profile.displayName || email.split('@')[0], 'user', 'customer', 1, ts, ts);
+      // See the same preferred_language note in the /verify-otp handler above.
+      db.prepare(`INSERT INTO users (id, email, google_id, full_name, role, account_type, email_verified, preferred_language, created_date, updated_date)
+                  VALUES (?,?,?,?,?,?,?,?,?,?)`)
+        .run(id, email, profile.id, profile.displayName || email.split('@')[0], 'user', 'customer', 1, 'en', ts, ts);
       user = db.prepare('SELECT * FROM users WHERE id = ?').get(id);
     } else if (!user.google_id) {
       db.prepare('UPDATE users SET google_id = ? WHERE id = ?').run(profile.id, user.id);

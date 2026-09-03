@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "verification": "सत्यापन",
+    "myFarms": "मेरे खेत",
+    "documents": "दस्तावेज़",
+    "products": "उत्पाद",
+    "orders": "ऑर्डर",
+    "earnings": "कमाई",
+    "analytics": "विश्लेषण",
+    "signOut": "साइन आउट"
+  },
+  "common": {
+    "save": "सहेजें",
+    "saveChanges": "बदलाव सहेजें",
+    "cancel": "रद्द करें",
+    "upload": "अपलोड करें",
+    "uploading": "अपलोड हो रहा है...",
+    "saving": "सहेजा जा रहा है...",
+    "submit": "जमा करें",
+    "retry": "पुनः प्रयास करें",
+    "replace": "बदलें"
+  },
+  "verification": {
+    "title": "सत्यापन केंद्र",
+    "subtitle": "सत्यापित किसान का बैज पाने के लिए सभी चरण पूरे करें।",
+    "progress": "सत्यापन प्रगति",
+    "profilePhoto": "प्रोफ़ाइल फोटो",
+    "profilePhotoDesc": "पासपोर्ट आकार की फोटो - पोर्ट्रेट या वर्गाकार, सादी पृष्ठभूमि, चेहरा स्पष्ट दिखे।",
+    "uploadPhoto": "फोटो अपलोड करें",
+    "replacePhoto": "फोटो बदलें",
+    "mapFarm": "अपने खेत का नक्शा बनाएं",
+    "uploadDocuments": "दस्तावेज़ अपलोड करें"
+  },
+  "account": {
+    "title": "मेरा खाता",
+    "myAccount": "मेरा खाता",
+    "becomeFarmer": "सत्यापित किसान बनें",
+    "wantToSell": "FarmTrust पर बेचना चाहते हैं?",
+    "profilePhoto": "प्रोफ़ाइल फोटो"
+  },
+  "language": {
+    "select": "भाषा चुनें",
+    "title": "भाषा"
+  }
+}

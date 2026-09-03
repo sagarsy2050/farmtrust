@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
-import { MapPin, Ruler, Search } from 'lucide-react';
+import { api } from '@/api/client';
+import { MapPin, Search } from 'lucide-react';
 import VerifiedBadge from '@/components/VerifiedBadge';
 import { Button } from '@/components/ui/button';
 
@@ -13,7 +13,7 @@ export default function AdminFarms() {
   const loadFarms = async () => {
     try {
       setError(null);
-      setFarms(await base44.asServiceRole.entities.Farm.list('-created_date', 100));
+      setFarms(await api.asServiceRole.entities.Farm.list('-created_date', 100));
     } catch (e) {
       console.error(e);
       setError('Could not load farms. Please try again.');
@@ -29,7 +29,7 @@ export default function AdminFarms() {
 
   const updateStatus = async (farm, status) => {
     try {
-      await base44.asServiceRole.entities.Farm.update(farm.id, { verification_status: status });
+      await api.asServiceRole.entities.Farm.update(farm.id, { verification_status: status });
       await loadFarms();
     } catch (e) {
       console.error(e);

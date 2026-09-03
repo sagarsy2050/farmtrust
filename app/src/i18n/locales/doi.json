@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "verification": "तसदीक",
+    "myFarms": "मेरे खेत",
+    "documents": "दस्तावेज़",
+    "products": "उत्पाद",
+    "orders": "ऑर्डर",
+    "earnings": "कमाई",
+    "analytics": "विश्लेषण",
+    "signOut": "साइन आउट"
+  },
+  "common": {
+    "save": "सम्भाल्लो",
+    "saveChanges": "बदलाव सम्भाल्लो",
+    "cancel": "रद्द करो",
+    "upload": "अपलोड करो",
+    "uploading": "अपलोड होआ करदा...",
+    "saving": "सम्भालेआ जा करदा...",
+    "submit": "जमा करो",
+    "retry": "फिरी कोशिश करो",
+    "replace": "बदलो"
+  },
+  "verification": {
+    "title": "तसदीक केंद्र",
+    "subtitle": "तसदीकशुदा किसान बैज हासल करने आस्तै सारे पड़ाऽ पूरे करो।",
+    "progress": "तसदीक प्रगति",
+    "profilePhoto": "प्रोफाइल फोटो",
+    "profilePhotoDesc": "पासपोर्ट आकारे दी फोटो - पोर्ट्रेट या चौकोर, सादी पृष्ठभूमि, चेहरा साफ दिक्खना चाहिदा।",
+    "uploadPhoto": "फोटो अपलोड करो",
+    "replacePhoto": "फोटो बदलो",
+    "mapFarm": "अपणे खेत दा नक्शा बनाओ",
+    "uploadDocuments": "दस्तावेज़ अपलोड करो"
+  },
+  "account": {
+    "title": "मेरा खाता",
+    "myAccount": "मेरा खाता",
+    "becomeFarmer": "तसदीकशुदा किसान बणो",
+    "wantToSell": "FarmTrust उप्पर बेचना चांह्दे ओ?",
+    "profilePhoto": "प्रोफाइल फोटो"
+  },
+  "language": {
+    "select": "भाशा चुनो",
+    "title": "भाशा"
+  }
+}

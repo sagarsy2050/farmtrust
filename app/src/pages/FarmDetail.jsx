@@ -5,7 +5,6 @@ import VerifiedBadge from '@/components/VerifiedBadge';
 import ReviewStars from '@/components/ReviewStars';
 import PublicNavbar from '@/components/PublicNavbar';
 import Footer from '@/components/Footer';
-import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
 
 export default function FarmDetail({ farm, reviews = [], loading }) {

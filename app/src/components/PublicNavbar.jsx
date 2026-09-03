@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, ShoppingCart, Menu, X } from 'lucide-react';
+import { Sprout, ShoppingCart, Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/lib/cartContext';
-import { cn } from '@/lib/utils';
+import { useAuth } from '@/lib/AuthContext';
 
 export default function PublicNavbar() {
   const { count } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
   const [open, setOpen] = React.useState(false);
+  const dashboardLink = user?.role === 'admin' ? '/admin' : user?.account_type === 'farmer' ? '/farmer' : null;
 
   const links = [
     { label: 'Marketplace', to: '/' },
@@ -48,12 +50,26 @@ export default function PublicNavbar() {
               )}
             </Button>
           </Link>
-          <Link to="/login" className="hidden md:block">
-            <Button variant="outline" size="sm">Sign in</Button>
-          </Link>
-          <Link to="/register" className="hidden md:block">
-            <Button size="sm">Get started</Button>
-          </Link>
+          {isAuthenticated ? (
+            <div className="hidden items-center gap-2 md:flex">
+              {dashboardLink && (
+                <Link to={dashboardLink}><Button variant="outline" size="sm">{user.role === 'admin' ? 'Admin' : 'Farmer portal'}</Button></Link>
+              )}
+              <Link to="/account">
+                <Button variant="outline" size="sm"><User className="mr-1.5 h-3.5 w-3.5" />{user?.full_name?.split(' ')[0] || 'Account'}</Button>
+              </Link>
+              <Button size="sm" variant="ghost" onClick={() => logout()} aria-label="Sign out"><LogOut className="h-4 w-4" /></Button>
+            </div>
+          ) : (
+            <>
+              <Link to="/login" className="hidden md:block">
+                <Button variant="outline" size="sm">Sign in</Button>
+              </Link>
+              <Link to="/register" className="hidden md:block">
+                <Button size="sm">Get started</Button>
+              </Link>
+            </>
+          )}
           <button
             className="flex h-11 w-11 items-center justify-center rounded-lg text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden"
             onClick={() => setOpen(!open)}
@@ -74,10 +90,26 @@ export default function PublicNavbar() {
               {l.label}
             </Link>
           ))}
-          <div className="mt-2 flex gap-2">
-            <Link to="/login" className="flex-1"><Button variant="outline" size="sm" className="w-full">Sign in</Button></Link>
-            <Link to="/register" className="flex-1"><Button size="sm" className="w-full">Get started</Button></Link>
-          </div>
+          {isAuthenticated ? (
+            <div className="mt-2 space-y-2">
+              {dashboardLink && (
+                <Link to={dashboardLink} onClick={() => setOpen(false)}>
+                  <Button variant="outline" size="sm" className="w-full">{user.role === 'admin' ? 'Admin dashboard' : 'Farmer portal'}</Button>
+                </Link>
+              )}
+              <Link to="/account" onClick={() => setOpen(false)}>
+                <Button variant="outline" size="sm" className="w-full"><User className="mr-1.5 h-3.5 w-3.5" />My account</Button>
+              </Link>
+              <Button size="sm" variant="ghost" className="w-full" onClick={() => { setOpen(false); logout(); }}>
+                <LogOut className="mr-1.5 h-3.5 w-3.5" /> Sign out
+              </Button>
+            </div>
+          ) : (
+            <div className="mt-2 flex gap-2">
+              <Link to="/login" className="flex-1"><Button variant="outline" size="sm" className="w-full">Sign in</Button></Link>
+              <Link to="/register" className="flex-1"><Button size="sm" className="w-full">Get started</Button></Link>
+            </div>
+          )}
         </nav>
       )}
     </header>

@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "verification": "सत्यापन",
+    "myFarms": "हमर खेत",
+    "documents": "कागजात",
+    "products": "उत्पाद",
+    "orders": "ऑर्डर",
+    "earnings": "कमाई",
+    "analytics": "विश्लेषण",
+    "signOut": "साइन आउट"
+  },
+  "common": {
+    "save": "सहेजू",
+    "saveChanges": "बदलाव सहेजू",
+    "cancel": "रद्द करू",
+    "upload": "अपलोड करू",
+    "uploading": "अपलोड भऽ रहल अछि...",
+    "saving": "सहेजल जा रहल अछि...",
+    "submit": "जमा करू",
+    "retry": "फेर कोशिश करू",
+    "replace": "बदलू"
+  },
+  "verification": {
+    "title": "सत्यापन केंद्र",
+    "subtitle": "सत्यापित किसान बैज पाबय लेल सभटा चरण पूरा करू।",
+    "progress": "सत्यापन प्रगति",
+    "profilePhoto": "प्रोफाइल फोटो",
+    "profilePhotoDesc": "पासपोर्ट आकारक फोटो - पोर्ट्रेट या वर्गाकार, सादा पृष्ठभूमि, चेहरा स्पष्ट देखाइ दियौ।",
+    "uploadPhoto": "फोटो अपलोड करू",
+    "replacePhoto": "फोटो बदलू",
+    "mapFarm": "अपन खेतक नक्शा बनाउ",
+    "uploadDocuments": "कागजात अपलोड करू"
+  },
+  "account": {
+    "title": "हमर खाता",
+    "myAccount": "हमर खाता",
+    "becomeFarmer": "सत्यापित किसान बनू",
+    "wantToSell": "FarmTrust पर बेचय चाहैत छी?",
+    "profilePhoto": "प्रोफाइल फोटो"
+  },
+  "language": {
+    "select": "भाषा चुनू",
+    "title": "भाषा"
+  }
+}

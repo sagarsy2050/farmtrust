@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import { Sprout, LayoutDashboard, ShieldCheck, MapPin, FileText, Package, ShoppingCart, Users, BarChart3, LogOut, Menu, TrendingUp } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -20,7 +20,7 @@ const NAV = [
 export default function AdminPortal() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
-  const handleLogout = () => base44.auth.logout('/login');
+  const handleLogout = () => api.auth.logout('/login');
 
   const pageTitle = [...NAV].reverse().find(item =>
     item.end ? location.pathname === item.to : location.pathname.startsWith(item.to)

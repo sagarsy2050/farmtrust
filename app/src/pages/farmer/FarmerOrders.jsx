@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { formatCurrency, formatDate } from '@/lib/format';
@@ -19,7 +19,7 @@ export default function FarmerOrders() {
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -27,7 +27,7 @@ export default function FarmerOrders() {
     if (!user?.id) return;
     setLoading(true);
     setError(null);
-    try { setOrders(await base44.entities.Order.filter({ farmer_id: user.id }, '-created_date')); }
+    try { setOrders(await api.entities.Order.filter({ farmer_id: user.id }, '-created_date')); }
     catch (e) { console.error(e); setError('Could not load your orders.'); }
     finally { setLoading(false); }
   }, [user?.id]);
@@ -36,7 +36,7 @@ export default function FarmerOrders() {
 
   const updateStatus = async (orderId, status) => {
     try {
-      await base44.entities.Order.update(orderId, { delivery_status: status });
+      await api.entities.Order.update(orderId, { delivery_status: status });
       await loadOrders();
     } catch (e) {
       toast({ title: 'Could not update order', description: e.message, variant: 'destructive' });

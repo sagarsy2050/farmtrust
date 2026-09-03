@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import { api } from '@/api/client';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { formatCurrency } from '@/lib/format';
 import { TrendingUp, Package, Star, Repeat } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -11,7 +11,6 @@ export default function FarmerAnalytics() {
   const { user: ctxUser } = useOutletContext();
   const [user, setUser] = useState(ctxUser);
   const [orders, setOrders] = useState([]);
-  const [products, setProducts] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,7 +18,7 @@ export default function FarmerAnalytics() {
   const chartHeight = isMobile ? 220 : 300;
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -28,12 +27,11 @@ export default function FarmerAnalytics() {
     setLoading(true);
     setError(null);
     try {
-      const [o, p, r] = await Promise.all([
-        base44.entities.Order.filter({ farmer_id: user.id }, '-created_date'),
-        base44.entities.Product.filter({ farmer_id: user.id }),
-        base44.entities.Review.filter({ farmer_id: user.id }),
+      const [o, r] = await Promise.all([
+        api.entities.Order.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Review.filter({ farmer_id: user.id }),
       ]);
-      setOrders(o); setProducts(p); setReviews(r);
+      setOrders(o); setReviews(r);
     } catch (e) {
       console.error(e);
       setError('Could not load your analytics.');
@@ -74,8 +72,6 @@ export default function FarmerAnalytics() {
     acc[o.customer_id] = (acc[o.customer_id] || 0) + 1;
     return acc;
   }, {})).filter(c => c > 1).length;
-
-  const COLORS = ['#15803d', '#eab308', '#f97316', '#84cc16', '#06b6d4'];
 
   return (
     <div className="space-y-6">

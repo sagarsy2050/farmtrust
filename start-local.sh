@@ -34,6 +34,6 @@ if [ -n "$1" ]; then
   (cd "$APP_DIR" && npm run dev)
 else
   echo "[info] no frontend path given — backend only. Run your app's"
-  echo "       'npm run dev' separately once base44Client.js is patched."
+  echo "       'npm run dev' separately once client.js is patched."
   wait $SERVER_PID
 fi

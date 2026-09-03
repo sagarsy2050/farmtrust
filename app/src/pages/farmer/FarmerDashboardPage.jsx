@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import FarmerDashboard from '@/components/farmer/FarmerDashboard';
 
 export default function FarmerDashboardPage() {
@@ -15,7 +15,7 @@ export default function FarmerDashboardPage() {
   useEffect(() => {
     if (ctxUser) { setUser(ctxUser); setLoading(false); }
     else {
-      base44.auth.me().then(u => { setUser(u); setLoading(false); }).catch(() => setLoading(false));
+      api.auth.me().then(u => { setUser(u); setLoading(false); }).catch(() => setLoading(false));
     }
   }, [ctxUser]);
 
@@ -24,9 +24,9 @@ export default function FarmerDashboardPage() {
     setError(null);
     try {
       const [f, p, o] = await Promise.all([
-        base44.entities.Farm.filter({ farmer_id: user.id }, '-created_date'),
-        base44.entities.Product.filter({ farmer_id: user.id }, '-created_date'),
-        base44.entities.Order.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Farm.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Product.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Order.filter({ farmer_id: user.id }, '-created_date'),
       ]);
       setFarms(f); setProducts(p); setOrders(o);
     } catch (e) {

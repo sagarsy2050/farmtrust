@@ -1,12 +1,10 @@
-// Drop-in replacement for the old @base44/sdk client.
-// Every page in this app calls base44.entities.X / base44.auth.X /
-// base44.functions.invoke / base44.integrations.Core.* — this object
-// implements that exact surface against our own Node/Express server
-// instead of the Base44 platform. No page code needed to change.
+// Frontend API client for the local Node/Express server. Every page calls
+// api.entities.X / api.auth.X / api.functions.invoke / api.integrations.Core.*
+// against our own backend — no third-party platform involved.
 import { appParams } from '@/lib/app-params';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:3001/api';
-const TOKEN_KEY = 'base44_access_token'; // same key app-params.js already reads/writes
+const TOKEN_KEY = 'farmtrust_access_token'; // same key app-params.js already reads/writes
 
 let tokenCache = appParams.token || localStorage.getItem(TOKEN_KEY) || null;
 
@@ -116,7 +114,7 @@ const auth = {
   },
 };
 
-export const base44 = {
+export const api = {
   auth,
   entities: buildEntities(false),
   asServiceRole: {

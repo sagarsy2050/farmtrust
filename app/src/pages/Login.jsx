@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { api } from "@/api/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,7 +20,7 @@ export default function Login() {
   const returnTo = safeReturnTo();
 
   useEffect(() => {
-    base44.auth.config().then(c => setGoogleEnabled(!!c.googleEnabled)).catch(() => {});
+    api.auth.config().then(c => setGoogleEnabled(!!c.googleEnabled)).catch(() => {});
   }, []);
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ export default function Login() {
     setError("");
     setLoading(true);
     try {
-      const user = await base44.auth.loginViaEmailPassword(email, password);
+      const user = await api.auth.loginViaEmailPassword(email, password);
       // Explicit returnTo (e.g. resuming an OAuth consent flow) always wins.
       // Otherwise route by role/account_type instead of dumping everyone on
       // the customer marketplace.
@@ -50,7 +50,7 @@ export default function Login() {
   };
 
   const handleGoogle = () => {
-    base44.auth.loginWithProvider("google", returnTo);
+    api.auth.loginWithProvider("google", returnTo);
   };
 
   return (

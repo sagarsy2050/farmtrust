@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { CheckCircle, Circle, Clock, AlertTriangle, ShieldCheck, Camera, Loader2 } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { useTranslation } from 'react-i18next';
+import { CheckCircle, Clock, AlertTriangle, ShieldCheck, Camera, Loader2 } from 'lucide-react';
+import { api } from '@/api/client';
 import VerifiedBadge from '@/components/VerifiedBadge';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -30,6 +31,7 @@ const CHECKS = [
 ];
 
 export default function VerificationCenter() {
+  const { t } = useTranslation();
   const { user: ctxUser } = useOutletContext();
   const [user, setUser] = useState(ctxUser);
   const [checks, setChecks] = useState([]);
@@ -41,7 +43,7 @@ export default function VerificationCenter() {
   const photoInputRef = useRef(null);
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -51,9 +53,9 @@ export default function VerificationCenter() {
     setError(null);
     try {
       const [c, f, d] = await Promise.all([
-        base44.entities.VerificationCheck.filter({ farmer_id: user.id }, '-created_date'),
-        base44.entities.Farm.filter({ farmer_id: user.id }),
-        base44.entities.Document.filter({ farmer_id: user.id }),
+        api.entities.VerificationCheck.filter({ farmer_id: user.id }, '-created_date'),
+        api.entities.Farm.filter({ farmer_id: user.id }),
+        api.entities.Document.filter({ farmer_id: user.id }),
       ]);
       setChecks(c); setFarms(f); setDocuments(d);
     } catch (e) {
@@ -96,8 +98,8 @@ export default function VerificationCenter() {
 
     setUploadingPhoto(true);
     try {
-      const { file_url } = await base44.integrations.Core.UploadFile({ file });
-      const updated = await base44.entities.User.update(user.id, { avatar_url: file_url });
+      const { file_url } = await api.integrations.Core.UploadFile({ file });
+      const updated = await api.entities.User.update(user.id, { avatar_url: file_url });
       setUser(updated);
       toast({ title: 'Profile photo updated' });
     } catch (err) {
@@ -130,8 +132,8 @@ export default function VerificationCenter() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-heading text-2xl font-bold">Verification Center</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Complete all steps to earn your Verified Farmer tag.</p>
+        <h1 className="font-heading text-2xl font-bold">{t('verification.title')}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{t('verification.subtitle')}</p>
       </div>
 
       {error && (
@@ -152,7 +154,7 @@ export default function VerificationCenter() {
       <div className="rounded-2xl border border-border bg-card p-5">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-sm text-muted-foreground">Verification Progress</div>
+            <div className="text-sm text-muted-foreground">{t('verification.progress')}</div>
             <div className="mt-1 font-heading text-2xl font-bold">{pct}%</div>
           </div>
           <VerifiedBadge level={level} />
@@ -172,14 +174,12 @@ export default function VerificationCenter() {
           )}
         </div>
         <div className="min-w-0 flex-1">
-          <div className="text-sm font-medium">Profile photo</div>
-          <p className="mt-0.5 text-xs text-muted-foreground">
-            Passport-size photo — portrait or square, plain background, face clearly visible. Shown on your verified farmer profile.
-          </p>
+          <div className="text-sm font-medium">{t('verification.profilePhoto')}</div>
+          <p className="mt-0.5 text-xs text-muted-foreground">{t('verification.profilePhotoDesc')}</p>
         </div>
         <input ref={photoInputRef} type="file" accept="image/*" className="hidden" onChange={handlePhotoSelect} />
         <Button size="sm" variant="outline" disabled={uploadingPhoto} onClick={() => photoInputRef.current?.click()}>
-          {uploadingPhoto ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Uploading...</> : (user?.avatar_url ? 'Replace photo' : 'Upload photo')}
+          {uploadingPhoto ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('common.uploading')}</> : (user?.avatar_url ? t('verification.replacePhoto') : t('verification.uploadPhoto'))}
         </Button>
       </div>
 
@@ -225,10 +225,10 @@ export default function VerificationCenter() {
       {/* Actions */}
       <div className="grid gap-3 sm:grid-cols-2">
         <Link to="/farmer/farms">
-          <Button variant="outline" className="w-full">Map your farm</Button>
+          <Button variant="outline" className="w-full">{t('verification.mapFarm')}</Button>
         </Link>
         <Link to="/farmer/documents">
-          <Button variant="outline" className="w-full">Upload documents</Button>
+          <Button variant="outline" className="w-full">{t('verification.uploadDocuments')}</Button>
         </Link>
       </div>
 

@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ꯗꯦꯁꯕꯣꯔꯗ",
+    "verification": "ꯑꯗꯨꯝ ꯆꯥꯅꯕ",
+    "myFarms": "ꯑꯩꯒꯤ ꯂꯧꯕꯨꯛ",
+    "documents": "ꯗꯣꯀꯨꯃꯦꯟꯇ",
+    "products": "ꯄꯨꯔꯣꯗꯛꯇ",
+    "orders": "ꯑꯣꯔꯗꯔ",
+    "earnings": "ꯃꯅꯨꯪ",
+    "analytics": "ꯑꯦꯅꯥꯂꯤꯇꯤꯛꯁ",
+    "signOut": "ꯁꯥꯢꯟ ꯑꯑꯨꯠ"
+  },
+  "common": {
+    "save": "ꯁꯦꯚ ꯇꯧꯕꯤꯌꯨ",
+    "saveChanges": "ꯑꯍꯣꯡꯕꯁꯤꯡ ꯁꯦꯚ ꯇꯧꯕꯤꯌꯨ",
+    "cancel": "ꯀꯛꯊꯠꯄꯤꯌꯨ",
+    "upload": "ꯑꯄꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ",
+    "uploading": "ꯑꯄꯂꯣꯗ ꯇꯧꯔꯤ...",
+    "saving": "ꯁꯦꯚ ꯇꯧꯔꯤ...",
+    "submit": "ꯄꯤꯗꯨꯅ ꯄꯤꯕꯤꯌꯨ",
+    "retry": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯍꯣꯠꯄꯤꯌꯨ",
+    "replace": "ꯑꯍꯣꯡꯕꯤꯌꯨ"
+  },
+  "verification": {
+    "title": "ꯑꯗꯨꯝ ꯆꯥꯅꯕ ꯀꯦꯟꯗ꯭ꯔ",
+    "subtitle": "ꯑꯗꯨꯝ ꯆꯥꯅꯕ ꯂꯧꯕꯤꯅ ꯕꯦꯖ ꯐꯪꯅꯕ ꯑꯣꯏꯅ ꯑꯐꯕ ꯑꯗꯨ ꯂꯣꯢꯁꯤꯟ ꯇꯧꯕꯤꯌꯨ ꯫",
+    "progress": "ꯑꯗꯨꯝ ꯆꯥꯅꯕꯒꯤ ꯄ꯭ꯔꯣꯒ꯭ꯔꯦꯁ",
+    "profilePhoto": "ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯐꯣꯇꯣ",
+    "profilePhotoDesc": "ꯄꯥꯁꯄꯣꯔꯠ ꯃꯥꯏꯅꯤꯡꯒꯤ ꯐꯣꯇꯣ - ꯃꯃꯤꯡ ꯑꯃꯗꯤ ꯀꯋꯦꯔ, ꯑꯐꯕ ꯄ꯭ꯔꯚꯤꯡ ꯑꯃ ꯑꯃꯗꯤ ꯃꯥꯏ ꯃꯪꯗꯥ ꯐꯪꯒꯗꯕꯅꯤ ꯫",
+    "uploadPhoto": "ꯐꯣꯇꯣ ꯑꯄꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ",
+    "replacePhoto": "ꯐꯣꯇꯣ ꯑꯍꯣꯡꯕꯤꯌꯨ",
+    "mapFarm": "ꯅꯍꯥꯛꯀꯤ ꯂꯧꯕꯨꯛ ꯃꯦꯞ ꯇꯧꯕꯤꯌꯨ",
+    "uploadDocuments": "ꯗꯣꯀꯨꯃꯦꯟꯇ ꯑꯄꯂꯣꯗ ꯇꯧꯕꯤꯌꯨ"
+  },
+  "account": {
+    "title": "ꯑꯩꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ",
+    "myAccount": "ꯑꯩꯒꯤ ꯑꯦꯀꯥꯎꯟꯠ",
+    "becomeFarmer": "ꯑꯗꯨꯝ ꯆꯥꯅꯕ ꯂꯧꯕꯤ ꯑꯣꯏꯕꯤꯌꯨ",
+    "wantToSell": "FarmTrust ꯗꯥ ꯌꯣꯟꯅꯕ ꯄꯥꯝꯃꯤ?",
+    "profilePhoto": "ꯄ꯭ꯔꯣꯐꯥꯏꯜ ꯐꯣꯇꯣ"
+  },
+  "language": {
+    "select": "ꯂꯣꯟ ꯈꯟꯕꯤꯌꯨ",
+    "title": "ꯂꯣꯟ"
+  }
+}

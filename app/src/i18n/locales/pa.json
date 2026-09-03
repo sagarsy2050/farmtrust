@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ਡੈਸ਼ਬੋਰਡ",
+    "verification": "ਤਸਦੀਕ",
+    "myFarms": "ਮੇਰੇ ਖੇਤ",
+    "documents": "ਦਸਤਾਵੇਜ਼",
+    "products": "ਉਤਪਾਦ",
+    "orders": "ਆਰਡਰ",
+    "earnings": "ਕਮਾਈ",
+    "analytics": "ਵਿਸ਼ਲੇਸ਼ਣ",
+    "signOut": "ਸਾਈਨ ਆਊਟ"
+  },
+  "common": {
+    "save": "ਸੰਭਾਲੋ",
+    "saveChanges": "ਬਦਲਾਅ ਸੰਭਾਲੋ",
+    "cancel": "ਰੱਦ ਕਰੋ",
+    "upload": "ਅੱਪਲੋਡ ਕਰੋ",
+    "uploading": "ਅੱਪਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
+    "saving": "ਸੰਭਾਲਿਆ ਜਾ ਰਿਹਾ ਹੈ...",
+    "submit": "ਜਮ੍ਹਾਂ ਕਰੋ",
+    "retry": "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+    "replace": "ਬਦਲੋ"
+  },
+  "verification": {
+    "title": "ਤਸਦੀਕ ਕੇਂਦਰ",
+    "subtitle": "ਤਸਦੀਕਸ਼ੁਦਾ ਕਿਸਾਨ ਬੈਜ ਪ੍ਰਾਪਤ ਕਰਨ ਲਈ ਸਾਰੇ ਪੜਾਅ ਪੂਰੇ ਕਰੋ।",
+    "progress": "ਤਸਦੀਕ ਪ੍ਰਗਤੀ",
+    "profilePhoto": "ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ",
+    "profilePhotoDesc": "ਪਾਸਪੋਰਟ ਆਕਾਰ ਦੀ ਫੋਟੋ - ਪੋਰਟਰੇਟ ਜਾਂ ਵਰਗ, ਸਾਦਾ ਪਿਛੋਕੜ, ਚਿਹਰਾ ਸਾਫ਼ ਦਿਖਾਈ ਦੇਣਾ ਚਾਹੀਦਾ ਹੈ।",
+    "uploadPhoto": "ਫੋਟੋ ਅੱਪਲੋਡ ਕਰੋ",
+    "replacePhoto": "ਫੋਟੋ ਬਦਲੋ",
+    "mapFarm": "ਆਪਣੇ ਖੇਤ ਦਾ ਨਕਸ਼ਾ ਬਣਾਓ",
+    "uploadDocuments": "ਦਸਤਾਵੇਜ਼ ਅੱਪਲੋਡ ਕਰੋ"
+  },
+  "account": {
+    "title": "ਮੇਰਾ ਖਾਤਾ",
+    "myAccount": "ਮੇਰਾ ਖਾਤਾ",
+    "becomeFarmer": "ਤਸਦੀਕਸ਼ੁਦਾ ਕਿਸਾਨ ਬਣੋ",
+    "wantToSell": "FarmTrust 'ਤੇ ਵੇਚਣਾ ਚਾਹੁੰਦੇ ਹੋ?",
+    "profilePhoto": "ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ"
+  },
+  "language": {
+    "select": "ਭਾਸ਼ਾ ਚੁਣੋ",
+    "title": "ਭਾਸ਼ਾ"
+  }
+}

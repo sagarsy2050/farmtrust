@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { api } from "@/api/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,7 +29,7 @@ export default function Register() {
   const wantsFarmer = new URLSearchParams(window.location.search).get("as") === "farmer";
 
   useEffect(() => {
-    base44.auth.config().then(c => setGoogleEnabled(!!c.googleEnabled)).catch(() => {});
+    api.auth.config().then(c => setGoogleEnabled(!!c.googleEnabled)).catch(() => {});
   }, []);
 
   const handleSubmit = async (e) => {
@@ -41,7 +41,7 @@ export default function Register() {
     }
     setLoading(true);
     try {
-      const result = await base44.auth.register({ email, password });
+      const result = await api.auth.register({ email, password });
       setDevOtp(result?.dev_otp || "");
       setShowOtp(true);
     } catch (err) {
@@ -55,12 +55,12 @@ export default function Register() {
     setError("");
     setLoading(true);
     try {
-      const result = await base44.auth.verifyOtp({ email, otpCode });
+      const result = await api.auth.verifyOtp({ email, otpCode });
       if (result?.access_token) {
-        base44.auth.setToken(result.access_token);
+        api.auth.setToken(result.access_token);
       }
       if (wantsFarmer && result?.user?.id) {
-        try { await base44.entities.User.update(result.user.id, { account_type: "farmer" }); } catch {}
+        try { await api.entities.User.update(result.user.id, { account_type: "farmer" }); } catch {}
         window.location.href = "/farmer";
       } else {
         window.location.href = safeReturnTo();
@@ -75,7 +75,7 @@ export default function Register() {
   const handleResend = async () => {
     setError("");
     try {
-      const result = await base44.auth.resendOtp(email);
+      const result = await api.auth.resendOtp(email);
       setDevOtp(result?.dev_otp || "");
       toast({
         title: "Code sent",
@@ -87,7 +87,7 @@ export default function Register() {
   };
 
   const handleGoogle = () => {
-    base44.auth.loginWithProvider("google", safeReturnTo());
+    api.auth.loginWithProvider("google", safeReturnTo());
   };
 
   if (showOtp) {

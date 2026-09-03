@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "ড্যাশব’ৰ্ড",
+    "verification": "সত্যাপন",
+    "myFarms": "মোৰ খেতিপথাৰ",
+    "documents": "নথিপত্ৰ",
+    "products": "সামগ্ৰী",
+    "orders": "অৰ্ডাৰ",
+    "earnings": "উপাৰ্জন",
+    "analytics": "বিশ্লেষণ",
+    "signOut": "চাইন আউট"
+  },
+  "common": {
+    "save": "ছাভ কৰক",
+    "saveChanges": "সলনিবোৰ ছাভ কৰক",
+    "cancel": "বাতিল কৰক",
+    "upload": "আপল’ড কৰক",
+    "uploading": "আপল’ড হৈ আছে...",
+    "saving": "ছাভ হৈ আছে...",
+    "submit": "জমা দিয়ক",
+    "retry": "পুনৰ চেষ্টা কৰক",
+    "replace": "সলনি কৰক"
+  },
+  "verification": {
+    "title": "সত্যাপন কেন্দ্ৰ",
+    "subtitle": "সত্যাপিত কৃষক বেজ পাবলৈ সকলো পৰ্যায় সম্পূৰ্ণ কৰক।",
+    "progress": "সত্যাপনৰ অগ্ৰগতি",
+    "profilePhoto": "প্ৰ’ফাইল ফট’",
+    "profilePhotoDesc": "পাছপ’ৰ্ট আকাৰৰ ফট’ - প’ৰ্ট্ৰেট বা বৰ্গাকাৰ, সাধাৰণ পটভূমি, মুখ স্পষ্টভাৱে দেখা যাব লাগে।",
+    "uploadPhoto": "ফট’ আপল’ড কৰক",
+    "replacePhoto": "ফট’ সলনি কৰক",
+    "mapFarm": "আপোনাৰ খেতিপথাৰৰ মানচিত্ৰ প্ৰস্তুত কৰক",
+    "uploadDocuments": "নথিপত্ৰ আপল’ড কৰক"
+  },
+  "account": {
+    "title": "মোৰ একাউণ্ট",
+    "myAccount": "মোৰ একাউণ্ট",
+    "becomeFarmer": "সত্যাপিত কৃষক হওক",
+    "wantToSell": "FarmTrust ত বিক্ৰী কৰিব বিচাৰে?",
+    "profilePhoto": "প্ৰ’ফাইল ফট’"
+  },
+  "language": {
+    "select": "ভাষা বাছনি কৰক",
+    "title": "ভাষা"
+  }
+}

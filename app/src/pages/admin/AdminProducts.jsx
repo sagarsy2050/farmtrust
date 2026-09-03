@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Package, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { formatCurrency } from '@/lib/format';
@@ -13,7 +13,7 @@ export default function AdminProducts() {
   const loadProducts = async () => {
     try {
       setError(null);
-      setProducts(await base44.asServiceRole.entities.Product.list('-created_date', 100));
+      setProducts(await api.asServiceRole.entities.Product.list('-created_date', 100));
     } catch (e) {
       console.error(e);
       setError('Could not load products. Please try again.');
@@ -29,7 +29,7 @@ export default function AdminProducts() {
 
   const unpublish = async (product) => {
     try {
-      await base44.asServiceRole.entities.Product.update(product.id, { status: 'archived' });
+      await api.asServiceRole.entities.Product.update(product.id, { status: 'archived' });
       await loadProducts();
     } catch (e) {
       console.error(e);

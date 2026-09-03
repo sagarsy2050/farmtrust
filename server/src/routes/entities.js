@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { db, uuidv4 } from '../db.js';
 import { requireAuth, optionalAuth } from '../middleware/authenticate.js';
 import { recomputeAndApply } from '../verification/compute.js';
+import { recomputeAreaMatch } from '../verification/areaMatch.js';
 
 const router = Router();
 const now = () => new Date().toISOString();
@@ -128,6 +129,11 @@ function buildRouterFor(table) {
     const placeholders = uniqueCols.map(c => `@${c}`).join(',');
     db.prepare(`INSERT INTO ${table} (${uniqueCols.join(',')}) VALUES (${placeholders})`).run(values);
     const row = db.prepare(`SELECT * FROM ${table} WHERE id = ?`).get(id);
+
+    if (table === 'farms' && (row.declared_area_hectares != null || row.calculated_area_hectares != null)) {
+      recomputeAreaMatch(db, row.id);
+    }
+
     res.status(201).json(deserialize(table, row));
   });
 
@@ -152,6 +158,9 @@ function buildRouterFor(table) {
     }
     if (table === 'farms' && 'boundary' in data && updated.farmer_id) {
       recomputeAndApply(db, updated.farmer_id);
+    }
+    if (table === 'farms' && ('declared_area_hectares' in data || 'calculated_area_hectares' in data)) {
+      recomputeAreaMatch(db, updated.id);
     }
 
     res.json(deserialize(table, updated));

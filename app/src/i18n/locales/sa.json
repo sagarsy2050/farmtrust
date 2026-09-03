@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "फलकम्",
+    "verification": "सत्यापनम्",
+    "myFarms": "मम कृषिक्षेत्राणि",
+    "documents": "दस्तावेजाः",
+    "products": "उत्पादनानि",
+    "orders": "आदेशाः",
+    "earnings": "आयः",
+    "analytics": "विश्लेषणम्",
+    "signOut": "निर्गमनम्"
+  },
+  "common": {
+    "save": "रक्ष",
+    "saveChanges": "परिवर्तनानि रक्ष",
+    "cancel": "रद्द कुरु",
+    "upload": "आरोहय",
+    "uploading": "आरोहणं भवति...",
+    "saving": "रक्षणं भवति...",
+    "submit": "समर्पय",
+    "retry": "पुनः प्रयत्नं कुरु",
+    "replace": "परिवर्तय"
+  },
+  "verification": {
+    "title": "सत्यापनकेन्द्रम्",
+    "subtitle": "सत्यापितकृषकबिल्ला प्राप्तुं सर्वाणि सोपानानि पूर्णानि कुरु।",
+    "progress": "सत्यापनप्रगतिः",
+    "profilePhoto": "परिचयचित्रम्",
+    "profilePhotoDesc": "पासपोर्ट-आकारस्य चित्रम् - मुखचित्रम् वा चतुरस्रम्, सामान्यपृष्ठभूमिः, मुखं स्पष्टं दृश्यताम्।",
+    "uploadPhoto": "चित्रम् आरोहय",
+    "replacePhoto": "चित्रं परिवर्तय",
+    "mapFarm": "स्वकृषिक्षेत्रस्य मानचित्रं रचय",
+    "uploadDocuments": "दस्तावेजान् आरोहय"
+  },
+  "account": {
+    "title": "मम गणना",
+    "myAccount": "मम गणना",
+    "becomeFarmer": "सत्यापितकृषकः भव",
+    "wantToSell": "FarmTrust-मध्ये विक्रेतुम् इच्छसि?",
+    "profilePhoto": "परिचयचित्रम्"
+  },
+  "language": {
+    "select": "भाषां चिनु",
+    "title": "भाषा"
+  }
+}

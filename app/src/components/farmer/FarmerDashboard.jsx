@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, ShieldCheck, MapPin, FileText, Package, ShoppingCart, Wallet, BarChart3, Plus, TrendingUp, Star } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { ShieldCheck, MapPin, FileText, Package, ShoppingCart, Wallet, Plus, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import VerifiedBadge from '@/components/VerifiedBadge';
 import { formatCurrency } from '@/lib/format';
@@ -30,6 +29,7 @@ export default function FarmerDashboard({ user, farms = [], products = [], order
 
   const stats = [
     { label: "Today's Sales", value: formatCurrency(todaySales), icon: TrendingUp },
+    { label: 'Total Revenue', value: formatCurrency(totalRevenue), icon: Wallet },
     { label: 'Orders', value: orders.length, icon: ShoppingCart },
     { label: 'Products', value: products.length, icon: Package },
     { label: 'Pending Orders', value: pendingOrders.length, icon: ShoppingCart },

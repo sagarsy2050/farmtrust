@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useOutletContext } from 'react-router-dom';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import FarmBoundaryMap from '@/components/FarmBoundaryMap';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, Loader2, AlertTriangle } from 'lucide-react';
@@ -28,7 +27,7 @@ export default function FarmEditor() {
   const [loadingFarm, setLoadingFarm] = useState(!!id);
 
   useEffect(() => {
-    if (!ctxUser) base44.auth.me().then(setUser).catch(() => {});
+    if (!ctxUser) api.auth.me().then(setUser).catch(() => {});
     else setUser(ctxUser);
   }, [ctxUser]);
 
@@ -37,7 +36,7 @@ export default function FarmEditor() {
     setLoadingFarm(true);
     setLoadError(null);
     try {
-      const farm = await base44.entities.Farm.get(id);
+      const farm = await api.entities.Farm.get(id);
       setForm({
         farm_name: farm.farm_name || '', village: farm.village || '', district: farm.district || '',
         state: farm.state || '', country: farm.country || 'India',
@@ -83,9 +82,9 @@ export default function FarmEditor() {
       };
 
       if (id) {
-        await base44.entities.Farm.update(id, farmData);
+        await api.entities.Farm.update(id, farmData);
       } else {
-        await base44.entities.Farm.create(farmData);
+        await api.entities.Farm.create(farmData);
       }
 
       toast({ title: 'Farm saved', description: 'Your farm has been saved.' });

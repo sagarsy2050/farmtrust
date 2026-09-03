@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS users (
   phone TEXT,
   account_type TEXT NOT NULL DEFAULT 'customer' CHECK(account_type IN ('customer','farmer')),
   village TEXT, district TEXT, state TEXT, country TEXT DEFAULT 'India',
-  preferred_language TEXT DEFAULT 'English',
+  preferred_language TEXT DEFAULT 'en', -- i18next language code, see app/src/lib/indianLanguages.js
   date_of_birth TEXT,
   verification_level TEXT NOT NULL DEFAULT 'none'
     CHECK(verification_level IN ('none','identity','location','documents','fully_verified')),
@@ -221,17 +221,22 @@ if (documentCols.length && !documentCols.includes('ai_flagged')) {
   db.exec('ALTER TABLE documents ADD COLUMN ai_flagged INTEGER DEFAULT 0');
   db.exec('ALTER TABLE documents ADD COLUMN ai_check_confidence REAL');
 }
+// Old rows predate the language picker and carry the literal word 'English'
+// instead of the 'en' code the i18n system now expects.
+db.prepare(`UPDATE users SET preferred_language = 'en' WHERE preferred_language = 'English' OR preferred_language IS NULL`).run();
 
 // Bootstrap admin account on first boot
 const adminEmail = process.env.ADMIN_EMAIL || 'admin@farmtrust.local';
 const existingAdmin = db.prepare('SELECT id FROM users WHERE role = ?').get('admin');
 if (!existingAdmin) {
   const now = new Date().toISOString();
-  db.prepare(`INSERT INTO users (id, email, password_hash, full_name, role, account_type, created_date, updated_date)
-              VALUES (?,?,?,?,?,?,?,?)`).run(
+  // preferred_language set explicitly — see the same note on the
+  // register/Google-OAuth inserts in routes/auth.js.
+  db.prepare(`INSERT INTO users (id, email, password_hash, full_name, role, account_type, preferred_language, created_date, updated_date)
+              VALUES (?,?,?,?,?,?,?,?,?)`).run(
     uuidv4(), adminEmail,
     bcrypt.hashSync(process.env.ADMIN_PASSWORD || 'ChangeMe123!', 10),
-    'FarmTrust Admin', 'admin', 'customer', now, now
+    'FarmTrust Admin', 'admin', 'customer', 'en', now, now
   );
   console.log(`[db] bootstrap admin created: ${adminEmail}`);
 }
@@ -260,9 +265,9 @@ const DEMO_FARMERS = [
 ];
 const insertDemoFarmer = db.prepare(`INSERT OR IGNORE INTO users
   (id, email, password_hash, full_name, role, account_type, village, district, state, country,
-   verification_level, verified_farmer, email_verified, created_date, updated_date)
+   verification_level, verified_farmer, email_verified, preferred_language, created_date, updated_date)
   VALUES (@id, @email, NULL, @full_name, 'user', 'farmer', @village, @district, @state, 'India',
-   'fully_verified', 1, 1, @created_date, @updated_date)`);
+   'fully_verified', 1, 1, 'en', @created_date, @updated_date)`);
 for (const f of DEMO_FARMERS) insertDemoFarmer.run({ ...f, created_date: demoNow, updated_date: demoNow });
 
 const DEMO_FARMS = [

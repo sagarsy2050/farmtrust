@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "डॅशबोर्ड",
+    "verification": "पडताळणी",
+    "myFarms": "म्हजी शेतां",
+    "documents": "दस्तावेज",
+    "products": "उत्पादनां",
+    "orders": "ऑर्डर",
+    "earnings": "कमाई",
+    "analytics": "विश्लेशण",
+    "signOut": "साइन आवट"
+  },
+  "common": {
+    "save": "जतन कर",
+    "saveChanges": "बदल जतन कर",
+    "cancel": "रद्द कर",
+    "upload": "अपलोड कर",
+    "uploading": "अपलोड जाता...",
+    "saving": "जतन जाता...",
+    "submit": "सादर कर",
+    "retry": "परत यत्न कर",
+    "replace": "बदल"
+  },
+  "verification": {
+    "title": "पडताळणी केंद्र",
+    "subtitle": "सत्यापित शेतकार बॅज मेळोवपाक सगळे पावल पूर्ण कर.",
+    "progress": "पडताळणी प्रगती",
+    "profilePhoto": "प्रोफायल फोटो",
+    "profilePhotoDesc": "पासपोर्ट आकाराचो फोटो - पोर्ट्रेट वा चौरस, सादी पाठभूंय, तोंड स्पश्ट दिसूंक जाय.",
+    "uploadPhoto": "फोटो अपलोड कर",
+    "replacePhoto": "फोटो बदल",
+    "mapFarm": "तुजें शेत नकाशांत हाड",
+    "uploadDocuments": "दस्तावेज अपलोड कर"
+  },
+  "account": {
+    "title": "म्हजें खातें",
+    "myAccount": "म्हजें खातें",
+    "becomeFarmer": "सत्यापित शेतकार जा",
+    "wantToSell": "FarmTrust वयर विकपाची इत्सा?",
+    "profilePhoto": "प्रोफायल फोटो"
+  },
+  "language": {
+    "select": "भास वेंच",
+    "title": "भास"
+  }
+}

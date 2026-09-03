@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Users, ShieldCheck, Search } from 'lucide-react';
 import VerifiedBadge from '@/components/VerifiedBadge';
@@ -13,7 +13,7 @@ export default function AdminFarmers() {
   const loadUsers = async () => {
     try {
       setError(null);
-      setUsers(await base44.asServiceRole.entities.User.list('-created_date', 100));
+      setUsers(await api.asServiceRole.entities.User.list('-created_date', 100));
     } catch (e) {
       console.error(e);
       setError('Could not load farmers. Please try again.');
@@ -36,7 +36,7 @@ export default function AdminFarmers() {
   const toggleVerified = async (user) => {
     const newLevel = user.verified_farmer ? 'none' : 'fully_verified';
     try {
-      await base44.asServiceRole.entities.User.update(user.id, {
+      await api.asServiceRole.entities.User.update(user.id, {
         verified_farmer: !user.verified_farmer,
         verification_level: newLevel
       });

@@ -1,0 +1,47 @@
+{
+  "appName": "FarmTrust",
+  "nav": {
+    "dashboard": "डैशबोर्ड",
+    "verification": "फोरमानथि",
+    "myFarms": "आंनि फार्महाई",
+    "documents": "दलिलफोर",
+    "products": "फिथाइफोर",
+    "orders": "ओरारफोर",
+    "earnings": "मोनफ्रोम",
+    "analytics": "बिश्लेसन",
+    "signOut": "साइन आउट"
+  },
+  "common": {
+    "save": "थारजासे",
+    "saveChanges": "सोलायनायखौ थारजासे",
+    "cancel": "गोमजोबदो",
+    "upload": "अपलोड खालामसे",
+    "uploading": "अपलोड जायोन दं...",
+    "saving": "थारजायोन दं...",
+    "submit": "दिनसे",
+    "retry": "फिन नाजासे",
+    "replace": "सोलाय"
+  },
+  "verification": {
+    "title": "फोरमानथि सेंटर",
+    "subtitle": "फोरमान खालामनाय फार्मार बेज मोननोगारि थाखाय गासै जिनाहाईखौ मोजां खालामसे।",
+    "progress": "फोरमानथि आगदि",
+    "profilePhoto": "प्रोफाइल फुथुर",
+    "profilePhotoDesc": "पासफर्ट महर फुथुर - पर्ट्रेट एबा बर्गाकार, सोदोब बेरहाबादि, गुथुइ गोमोथाब नुनांगौ।",
+    "uploadPhoto": "फुथुर अपलोड खालामसे",
+    "replacePhoto": "फुथुर सोलाय",
+    "mapFarm": "नोंथांनि फार्मनि मानचित्र सोरसो",
+    "uploadDocuments": "दलिलफोरखौ अपलोड खालामसे"
+  },
+  "account": {
+    "title": "आंनि खाथि",
+    "myAccount": "आंनि खाथि",
+    "becomeFarmer": "फोरमान खालामनाय फार्मार जासे",
+    "wantToSell": "FarmTrust आव सोलनानै मोनदांबाय मा?",
+    "profilePhoto": "प्रोफाइल फुथुर"
+  },
+  "language": {
+    "select": "रावखौ सायख",
+    "title": "राव"
+  }
+}

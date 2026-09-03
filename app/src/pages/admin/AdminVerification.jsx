@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { ShieldCheck, Search, Clock, CheckCircle, XCircle } from 'lucide-react';
-import VerifiedBadge from '@/components/VerifiedBadge';
 
 export default function AdminVerification() {
   const [checks, setChecks] = useState([]);
@@ -12,7 +11,7 @@ export default function AdminVerification() {
   useEffect(() => {
     (async () => {
       try {
-        setChecks(await base44.asServiceRole.entities.VerificationCheck.list('-created_date', 100));
+        setChecks(await api.asServiceRole.entities.VerificationCheck.list('-created_date', 100));
       } catch (e) {
         console.error(e);
         setError('Could not load verification checks. Please try again.');

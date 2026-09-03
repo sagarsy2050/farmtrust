@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Users, MapPin, FileText, Package, ShoppingCart, Clock, CheckCircle, XCircle, AlertTriangle, ShieldCheck, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -16,10 +16,10 @@ export default function AdminDashboard() {
     (async () => {
       try {
         const [docs, users, farms, orders] = await Promise.all([
-          base44.asServiceRole.entities.Document.list('-created_date', 100),
-          base44.asServiceRole.entities.User.list('-created_date', 200),
-          base44.asServiceRole.entities.Farm.list('-created_date', 200),
-          base44.asServiceRole.entities.Order.list('-created_date', 200),
+          api.asServiceRole.entities.Document.list('-created_date', 100),
+          api.asServiceRole.entities.User.list('-created_date', 200),
+          api.asServiceRole.entities.Farm.list('-created_date', 200),
+          api.asServiceRole.entities.Order.list('-created_date', 200),
         ]);
 
         setRecentDocs(docs.slice(0, 10));

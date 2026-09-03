@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Loader2, Sprout, ShieldCheck } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -64,7 +64,7 @@ export default function Checkout() {
           line_total: i.price_per_unit * i.quantity
         }));
 
-        const order = await base44.entities.Order.create({
+        const order = await api.entities.Order.create({
           customer_id: user.id,
           customer_name: form.name,
           customer_email: form.email,
@@ -82,7 +82,7 @@ export default function Checkout() {
         });
 
         // Create Stripe checkout session
-        const res = await base44.functions.invoke('createCheckoutSession', {
+        const res = await api.functions.invoke('createCheckoutSession', {
           order_id: order.id,
           amount: Math.round(subtotal * 100),
           customer_email: form.email,

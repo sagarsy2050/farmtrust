@@ -1,35 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Sprout, LayoutDashboard, MapPin, FileText, Package, ShoppingCart, Wallet, ShieldCheck, BarChart3, LogOut, Menu, X } from 'lucide-react';
-import { base44 } from '@/api/base44Client';
+import { api } from '@/api/client';
 import { Button } from '@/components/ui/button';
 import VerifiedBadge from '@/components/VerifiedBadge';
+import LanguageSelector from '@/components/LanguageSelector';
+import { LANGUAGE_BY_CODE } from '@/lib/indianLanguages';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const NAV = [
-  { to: '/farmer', label: 'Dashboard', icon: LayoutDashboard, end: true },
-  { to: '/farmer/verification', label: 'Verification', icon: ShieldCheck },
-  { to: '/farmer/farms', label: 'My Farms', icon: MapPin },
-  { to: '/farmer/documents', label: 'Documents', icon: FileText },
-  { to: '/farmer/products', label: 'Products', icon: Package },
-  { to: '/farmer/orders', label: 'Orders', icon: ShoppingCart },
-  { to: '/farmer/earnings', label: 'Earnings', icon: Wallet },
-  { to: '/farmer/analytics', label: 'Analytics', icon: BarChart3 },
+  { to: '/farmer', labelKey: 'nav.dashboard', icon: LayoutDashboard, end: true },
+  { to: '/farmer/verification', labelKey: 'nav.verification', icon: ShieldCheck },
+  { to: '/farmer/farms', labelKey: 'nav.myFarms', icon: MapPin },
+  { to: '/farmer/documents', labelKey: 'nav.documents', icon: FileText },
+  { to: '/farmer/products', labelKey: 'nav.products', icon: Package },
+  { to: '/farmer/orders', labelKey: 'nav.orders', icon: ShoppingCart },
+  { to: '/farmer/earnings', labelKey: 'nav.earnings', icon: Wallet },
+  { to: '/farmer/analytics', labelKey: 'nav.analytics', icon: BarChart3 },
 ];
 
 export default function FarmerPortal() {
+  const { t, i18n } = useTranslation();
   const [user, setUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
 
   useEffect(() => {
     (async () => {
-      try { setUser(await base44.auth.me()); } catch {}
+      try {
+        const u = await api.auth.me();
+        setUser(u);
+        // A farmer's saved language preference wins on load, so the portal
+        // opens in their language without them re-picking it every visit.
+        if (u?.preferred_language && LANGUAGE_BY_CODE[u.preferred_language]) i18n.changeLanguage(u.preferred_language);
+      } catch {}
     })();
-  }, []);
+  }, [i18n]);
 
-  const handleLogout = () => base44.auth.logout('/login');
+  const handleLogout = () => api.auth.logout('/login');
 
   return (
     <div className="flex min-h-screen bg-muted/20">
@@ -54,6 +64,7 @@ export default function FarmerPortal() {
           <div className="text-xs text-muted-foreground">Farmer portal</div>
           <div className="mt-0.5 font-medium">{user?.full_name || '...'}</div>
           <div className="mt-1"><VerifiedBadge level={user?.verification_level || 'none'} size="sm" /></div>
+          <LanguageSelector className="mt-3 w-full" />
         </div>
 
         <nav className="space-y-1 p-3">
@@ -66,7 +77,7 @@ export default function FarmerPortal() {
                   'flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive ? 'bg-primary text-primary-foreground' : 'text-sidebar-foreground hover:bg-sidebar-accent'
                 )}>
-                <Icon className="h-4 w-4" /> {item.label}
+                <Icon className="h-4 w-4" /> {t(item.labelKey)}
               </NavLink>
             );
           })}
@@ -74,7 +85,7 @@ export default function FarmerPortal() {
 
         <div className="absolute bottom-0 w-full border-t border-border p-3">
           <Button variant="ghost" size="sm" onClick={handleLogout} className="w-full justify-start text-muted-foreground">
-            <LogOut className="mr-2 h-4 w-4" /> Sign out
+            <LogOut className="mr-2 h-4 w-4" /> {t('nav.signOut')}
           </Button>
         </div>
       </aside>
