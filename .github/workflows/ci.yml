@@ -1,0 +1,76 @@
+name: CI
+
+# Runs the checks a "does this still work" pass would do by hand: lint +
+# build the frontend, boot the backend and hit its health endpoint, and
+# byte-compile every Python worker module. No secrets/network integrations
+# are required for any of this — it all matches the local-only design.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  frontend:
+    name: Frontend (lint + build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - run: npx eslint src
+      - run: npm run build
+
+  backend:
+    name: Backend (boots + /api/health)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: server/package-lock.json
+      - run: npm ci
+      - name: Boot the server and hit /api/health
+        run: |
+          cp .env.example .env
+          # OCR/AI-detector need Python/Tesseract we don't install in this
+          # job - disable both so the server boots on what npm ci alone gives us.
+          sed -i 's/^OCR_ENABLED=.*/OCR_ENABLED=false/' .env
+          sed -i 's/^AI_DETECTOR_ENABLED=.*/AI_DETECTOR_ENABLED=false/' .env
+          npm run start &
+          SERVER_PID=$!
+          for i in $(seq 1 20); do
+            if curl -sf http://127.0.0.1:3001/api/health; then echo; break; fi
+            sleep 0.5
+          done
+          curl -sf http://127.0.0.1:3001/api/health
+          kill $SERVER_PID
+
+  python-workers:
+    name: Python workers (byte-compile)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # No model checkpoints or system Tesseract in this job - this just
+      # confirms every module parses cleanly, same as the local py_compile
+      # pass this project's own review runs before a commit.
+      - run: |
+          python -m py_compile python-ocr/ocr_worker.py python-ocr/extraction/*.py \
+            python-ocr/ocr/*.py python-ocr/validation/*.py python-ocr/models/*.py \
+            ai-image-detector/detector_worker.py ai-image-detector/model.py
