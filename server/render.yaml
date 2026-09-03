@@ -1,0 +1,39 @@
+# Render.com blueprint for the FarmTrust backend.
+#
+# Deploy: push to GitHub, then on Render -> "New +" -> "Blueprint" -> pick this
+# repo. Render reads this file, creates the service, and asks you to fill in the
+# two secret values below (marked sync: false).
+#
+# The SQLite database lives on the service's ephemeral disk: it is re-created and
+# re-seeded from server/src/db.js every deploy. That is intentional for a demo —
+# the marketplace always comes up populated. Add a Render Disk here if you ever
+# need the data to persist between deploys.
+
+services:
+  - type: web
+    name: farmtrust-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: NODE_VERSION
+        value: "22"
+      - key: OCR_ENABLED
+        value: "false"
+      - key: AI_DETECTOR_ENABLED
+        value: "false"
+      - key: DB_PATH
+        value: ./farmtrust.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+      # Set this to your deployed frontend URL after the first deploy, e.g.
+      # https://farmtrust.vercel.app  — needed for browser CORS.
+      - key: CLIENT_ORIGIN
+        sync: false
